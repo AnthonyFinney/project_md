@@ -8,6 +8,7 @@ export default function Hero() {
         src="/hero_spring_summer.png"
         alt="New Spring-Summer Collection"
         fill
+        sizes="100vw"
         className="object-cover object-center"
         priority
       />

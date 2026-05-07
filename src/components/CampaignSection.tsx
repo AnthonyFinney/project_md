@@ -30,6 +30,7 @@ export default function CampaignSection() {
               src={campaign.image}
               alt={campaign.title}
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover object-center transition-transform duration-[800ms] ease-out group-hover:scale-105"
             />
             

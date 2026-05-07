@@ -38,6 +38,7 @@ export default function WeAreLacosteSection() {
                 src="/hero_spring_summer.png" // placeholder
                 alt="Man playing tennis"
                 fill
+                sizes="(max-width: 1024px) 100vw, 60vw"
                 className="object-cover"
               />
             </div>
