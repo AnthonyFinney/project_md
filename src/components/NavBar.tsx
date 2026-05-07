@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Search, CircleHelp, MapPin, Heart, User, ShoppingBag, ChevronDown, ChevronLeft, ChevronRight, Truck } from 'lucide-react';
+import { Search, CircleHelp, MapPin, Heart, User, ShoppingBag, ChevronDown, ChevronLeft, ChevronRight, Truck, X, Package } from 'lucide-react';
 
 const subNavData: Record<string, { title: string, sidebarLinks: string[], links: string[], imgText: string }> = {
   "New In": {
@@ -55,34 +55,62 @@ export default function NavBar() {
   const [openSubNav, setOpenSubNav] = useState<string | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+  const userMenuTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  const handleUserMenuEnter = () => {
+    if (userMenuTimeout.current) clearTimeout(userMenuTimeout.current);
+    setIsUserMenuOpen(true);
+  };
+
+  const handleUserMenuLeave = () => {
+    userMenuTimeout.current = setTimeout(() => {
+      setIsUserMenuOpen(false);
+    }, 150);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (navRef.current && !navRef.current.contains(event.target as Node)) {
         setOpenSubNav(null);
         setIsSearchOpen(false);
+        setIsUserMenuOpen(false);
       }
     };
 
-    const isMenuOpen = openSubNav !== null || isSearchOpen;
+    const isMenuOpen = openSubNav !== null || isSearchOpen || isUserMenuOpen;
 
     if (isMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
+      // Calculate scrollbar width to prevent layout shift glitch
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+      if (navRef.current) {
+        navRef.current.style.paddingRight = `${scrollbarWidth}px`;
+      }
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
     } else {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.body.style.paddingRight = '';
+      if (navRef.current) {
+        navRef.current.style.paddingRight = '';
+      }
       document.body.style.overflow = '';
       document.documentElement.style.overflow = '';
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.body.style.paddingRight = '';
+      if (navRef.current) {
+        navRef.current.style.paddingRight = '';
+      }
       document.body.style.overflow = '';
       document.documentElement.style.overflow = '';
     };
-  }, [openSubNav, isSearchOpen]);
+  }, [openSubNav, isSearchOpen, isUserMenuOpen]);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -123,7 +151,7 @@ export default function NavBar() {
     />
     <nav 
       ref={navRef}
-      className="fixed top-0 left-0 z-50 flex w-full flex-col bg-white shadow-sm transition-all" 
+      className="fixed top-0 left-0 z-50 flex w-full flex-col bg-white shadow-sm" 
       style={{ overflowAnchor: 'none' }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -218,7 +246,72 @@ export default function NavBar() {
             <Heart className="h-[24px] w-[24px] stroke-[1.2]" />
             <span className="absolute -right-2 -top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-black text-[9px] font-bold text-white">0</span>
           </Link>
-          <Link href="#" className="text-gray-900 hover:text-black"><User className="h-[24px] w-[24px] stroke-[1.2]" /></Link>
+          <div 
+            className="group flex h-full items-center relative px-2 -mx-2 cursor-pointer z-[80]"
+            onMouseEnter={handleUserMenuEnter}
+            onMouseLeave={handleUserMenuLeave}
+          >
+            <Link href="#" className="text-gray-900 hover:text-black peer">
+              <User className="h-[24px] w-[24px] stroke-[1.2]" />
+            </Link>
+            
+            {/* Tooltip */}
+            {!isUserMenuOpen && (
+              <div className="absolute top-[100%] right-0 mt-3 bg-[#111] text-white text-[11px] font-bold tracking-wide px-3 py-1.5 opacity-0 peer-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-[60]">
+                Go to my account
+              </div>
+            )}
+
+            {/* Invisible hover bridge to maintain hover state across the gap */}
+            {isUserMenuOpen && (
+              <div className={`absolute right-[-10px] top-[100%] w-[100px] bg-transparent z-[70] ${
+                (isScrolled && !isHovered) ? 'h-0' : 'h-[52px]'
+              }`} />
+            )}
+            
+            {/* User Dropdown Panel */}
+            <div 
+              className={`fixed right-0 w-[580px] bg-white border-l border-gray-200 shadow-[-10px_0_30px_rgba(0,0,0,0.05)] transition-all duration-300 ease-in-out cursor-default z-[60] overflow-y-auto ${
+                (isScrolled && !isHovered) ? 'top-[108px] h-[calc(100vh-108px)]' : 'top-[170px] h-[calc(100vh-160px)]'
+              } ${
+                isUserMenuOpen ? 'opacity-100 translate-x-0 visible' : 'opacity-0 translate-x-8 invisible pointer-events-none'
+              }`}
+            >
+              <div className="flex flex-col p-10 h-full">
+                <div className="flex justify-between items-center mb-8">
+                  <h2 className="text-[24px] font-serif text-gray-900 flex items-center gap-3">
+                    <User className="h-6 w-6 stroke-[1.2]" />
+                    Sign in / Sign up
+                  </h2>
+                  <button className="text-gray-400 hover:text-black transition-colors" onClick={() => setIsUserMenuOpen(false)}>
+                    <X className="h-5 w-5 stroke-[1.5]" />
+                  </button>
+                </div>
+                
+                <div className="flex flex-col gap-6">
+                  <div>
+                    <h3 className="text-[15px] font-medium text-gray-900 mb-2">Already a member?</h3>
+                    <p className="text-[14px] text-gray-600 leading-relaxed pr-4">
+                      Sign in for a personalized experience and access to all your benefits and offers.
+                    </p>
+                  </div>
+                  <button className="bg-[#092119] text-white py-3 px-8 font-bold text-[13px] tracking-wide hover:bg-black transition-colors w-max">
+                    LOG IN
+                  </button>
+                  <p className="text-[14px] text-gray-600">
+                    Not a customer yet? <Link href="#" className="text-gray-900 underline underline-offset-4 decoration-1 hover:decoration-2 font-medium">Create an account</Link>
+                  </p>
+                </div>
+
+                <div className="mt-10 pt-6 border-t border-gray-100">
+                  <Link href="#" className="flex items-center gap-4 text-gray-900 hover:text-gray-600 transition-colors group/guest">
+                    <Package className="h-[22px] w-[22px] stroke-[1.2]" />
+                    <span className="text-[14px] font-medium group-hover/guest:underline underline-offset-4">Looking for a guest checkout order?</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
           <Link href="#" className="relative text-gray-900 hover:text-black">
             <ShoppingBag className="h-[24px] w-[24px] stroke-[1.2]" />
             <span className="absolute -right-2 -top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-black text-[9px] font-bold text-white">0</span>
@@ -257,7 +350,7 @@ export default function NavBar() {
           ) : (
             <Link 
               key={item.name} 
-              href="#" 
+              href="/products" 
               className={`flex items-center gap-1.5 text-[14px] font-medium tracking-tight ${item.isGreen ? 'text-[#008a54]' : 'text-gray-500'} hover:text-black transition-colors`}
             >
               {item.name}
@@ -325,7 +418,7 @@ export default function NavBar() {
                   <h3 className="text-[20px] text-gray-900 font-serif mb-6">Top searches</h3>
                   <div className="flex flex-col gap-4">
                     {['mens', 'polo', 'shoes', 'tennis', 'bracelet'].map(item => (
-                      <Link key={item} href="#" className="text-[14px] text-gray-800 underline underline-offset-4 decoration-1 hover:text-black">
+                      <Link key={item} href="/products" onClick={() => setIsSearchOpen(false)} className="text-[14px] text-gray-800 underline underline-offset-4 decoration-1 hover:text-black">
                         {item}
                       </Link>
                     ))}
@@ -367,13 +460,13 @@ export default function NavBar() {
             {/* Column 1 */}
             <div className="w-[26%] border-r border-black">
               <div className="pt-8 pb-6 border-b border-black">
-                <Link href="#" className="pl-10 text-[14px] text-gray-900 hover:text-gray-600 transition-colors">
+                <Link href="/products" onClick={() => setOpenSubNav(null)} className="pl-10 text-[14px] text-gray-900 hover:text-gray-600 transition-colors">
                   {openSubNav && subNavData[openSubNav]?.title}
                 </Link>
               </div>
               <div className="pt-6 pl-10 flex flex-col gap-4">
                 {openSubNav && subNavData[openSubNav]?.sidebarLinks.map((link) => (
-                  <Link key={link} href="#" className="text-[14px] text-gray-600 hover:text-gray-900 transition-colors">
+                  <Link key={link} href="/products" onClick={() => setOpenSubNav(null)} className="text-[14px] text-gray-600 hover:text-gray-900 transition-colors">
                     {link}
                   </Link>
                 ))}
@@ -383,7 +476,7 @@ export default function NavBar() {
             {/* Column 2 */}
             <div className="w-[20%] pt-8 pl-10 flex flex-col gap-4">
               {openSubNav && subNavData[openSubNav]?.links.map((link) => (
-                <Link key={link} href="#" className="text-[14px] text-[#004751] hover:underline hover:underline-offset-4">
+                <Link key={link} href="/products" onClick={() => setOpenSubNav(null)} className="text-[14px] text-[#004751] hover:underline hover:underline-offset-4">
                   {link}
                 </Link>
               ))}
