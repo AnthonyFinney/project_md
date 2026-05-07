@@ -6,6 +6,7 @@ import { Search, CircleHelp, MapPin, Heart, User, ShoppingBag, ChevronDown, Chev
 
 export default function NavBar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -38,7 +39,12 @@ export default function NavBar() {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 flex w-full flex-col bg-white shadow-sm" style={{ overflowAnchor: 'none' }}>
+    <nav 
+      className="sticky top-0 z-50 flex w-full flex-col bg-white shadow-sm transition-all" 
+      style={{ overflowAnchor: 'none' }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {/* Top Notification Bar */}
       <div className="flex items-center justify-between bg-[#f4f4f4] px-4 py-2.5 text-xs text-gray-700">
         <button className="p-1 hover:text-black"><ChevronLeft className="h-4 w-4" /></button>
@@ -100,7 +106,7 @@ export default function NavBar() {
       {/* Sub Nav */}
       <div 
         className={`hidden w-full items-center justify-center gap-9 bg-white lg:flex transition-all duration-500 ease-in-out overflow-hidden ${
-          isScrolled ? 'h-0 opacity-0 border-transparent' : 'h-[52px] border-b border-gray-100 opacity-100'
+          (isScrolled && !isHovered) ? 'h-0 opacity-0 border-transparent' : 'h-[52px] border-b border-gray-100 opacity-100'
         }`}
       >
         {[
