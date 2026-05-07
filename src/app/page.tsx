@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import TrendingSection from "@/components/TrendingSection";
 import TournamentSection from "@/components/TournamentSection";
+import BestSellersSection from "@/components/BestSellersSection";
 
 export default function Home() {
   return (
@@ -8,6 +9,8 @@ export default function Home() {
       <Hero />
       <TrendingSection />
       <TournamentSection />
+      <BestSellersSection />
     </main>
   );
 }
+
