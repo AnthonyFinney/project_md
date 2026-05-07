@@ -8,28 +8,37 @@ export default function NavBar() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const hero = document.getElementById('hero-section');
-      const baseThreshold = hero ? hero.offsetHeight : 600;
-      
-      setIsScrolled((prev) => {
-        // Hysteresis: prevents the layout shift from causing a loop.
-        if (prev) {
-          // If already shrunk, wait until scrolling back up significantly before expanding
-          return window.scrollY > baseThreshold - 100;
-        } else {
-          // If expanded, wait until Hero is fully out of view to shrink
-          return window.scrollY > baseThreshold;
-        }
-      });
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    const updateScrollDir = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < 50) {
+        setIsScrolled(false);
+      } else if (currentScrollY > lastScrollY + 15) {
+        setIsScrolled(true);
+      } else if (currentScrollY < lastScrollY - 15) {
+        setIsScrolled(false);
+      }
+
+      lastScrollY = currentScrollY > 0 ? currentScrollY : 0;
+      ticking = false;
     };
 
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScrollDir);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 flex w-full flex-col bg-white shadow-sm">
+    <nav className="sticky top-0 z-50 flex w-full flex-col bg-white shadow-sm" style={{ overflowAnchor: 'none' }}>
       {/* Top Notification Bar */}
       <div className="flex items-center justify-between bg-[#f4f4f4] px-4 py-2.5 text-xs text-gray-700">
         <button className="p-1 hover:text-black"><ChevronLeft className="h-4 w-4" /></button>
