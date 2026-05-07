@@ -3,6 +3,7 @@ import TrendingSection from "@/components/TrendingSection";
 import TournamentSection from "@/components/TournamentSection";
 import BestSellersSection from "@/components/BestSellersSection";
 import CampaignSection from "@/components/CampaignSection";
+import WeAreLacosteSection from "@/components/WeAreLacosteSection";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <TournamentSection />
       <BestSellersSection />
       <CampaignSection />
+      <WeAreLacosteSection />
     </main>
   );
 }
