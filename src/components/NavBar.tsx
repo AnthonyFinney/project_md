@@ -312,7 +312,7 @@ export default function NavBar() {
               </div>
             </div>
           </div>
-          <Link href="#" className="relative text-gray-900 hover:text-black">
+          <Link href="/cart" className="relative text-gray-900 hover:text-black">
             <ShoppingBag className="h-[24px] w-[24px] stroke-[1.2]" />
             <span className="absolute -right-2 -top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-black text-[9px] font-bold text-white">0</span>
           </Link>
