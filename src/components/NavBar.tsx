@@ -208,8 +208,7 @@ export default function NavBar() {
             <ChevronLeft className="h-4 w-4 stroke-[1.5]" />
           </button>
           <span className="flex items-center gap-2 font-medium tracking-wide text-center">
-            Free Shipping on orders over $50.
-            <span className="underline underline-offset-4">Download Here</span>
+            Free Shipping on orders.
           </span>
           <button className="p-1 hover:text-black">
             <ChevronRight className="h-4 w-4 stroke-[1.5]" />
@@ -457,7 +456,7 @@ export default function NavBar() {
 
             {/* Mobile Hamburger Menu */}
             <button
-              className="lg:hidden ml-1 text-gray-900 hover:text-black flex items-center justify-center h-[24px] w-[24px] mr-6"
+              className="lg:hidden ml-1 text-gray-900 hover:text-black flex items-center justify-center h-[24px] w-[24px]"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? (
