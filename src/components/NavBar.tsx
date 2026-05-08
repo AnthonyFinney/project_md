@@ -15,7 +15,6 @@ import {
   Truck,
   X,
   Package,
-  Menu,
 } from "lucide-react";
 
 const subNavData: Record<
@@ -129,7 +128,7 @@ export default function NavBar() {
     }, 150);
   };
 
-  // Handle outside clicks and body scrolling without padding shifts
+  // Handle outside clicks
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (navRef.current && !navRef.current.contains(event.target as Node)) {
@@ -145,17 +144,11 @@ export default function NavBar() {
 
     if (isMenuOpen) {
       document.addEventListener("mousedown", handleClickOutside);
-      // Removed the padding-right calculation to prevent the layout shift glitch
-      document.body.style.overflow = "hidden";
     } else {
       document.removeEventListener("mousedown", handleClickOutside);
-      document.body.style.overflow = "";
     }
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.body.style.overflow = "";
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [openSubNav, isSearchOpen, isUserMenuOpen, isMobileMenuOpen]);
 
   // Handle scroll direction for shrinking header
@@ -164,6 +157,12 @@ export default function NavBar() {
     let ticking = false;
 
     const updateScrollDir = () => {
+      // 1. Check if we are on a mobile screen (Tailwind 'lg' is 1024px)
+      if (window.innerWidth < 1024) {
+        ticking = false;
+        return; // Bail out early: don't run the scroll effect on mobile
+      }
+
       const currentScrollY = window.scrollY;
       if (currentScrollY < 50) {
         setIsScrolled(false);
@@ -189,10 +188,10 @@ export default function NavBar() {
 
   return (
     <>
-      {/* Spacing block to prevent content jump when header gets fixed */}
+      {/* Spacing block: 140px on mobile (Top Bar + Nav + Mobile Search), 108/160px on desktop */}
       <div
-        className={`w-full transition-[height] duration-500 ease-in-out ${
-          isScrolled && !isHovered ? "h-[108px]" : "h-[108px] lg:h-[160px]"
+        className={`w-full transition-[height] duration-500 ease-in-out h-[140px] ${
+          isScrolled && !isHovered ? "lg:h-[108px]" : "lg:h-[160px]"
         }`}
       />
 
@@ -204,22 +203,22 @@ export default function NavBar() {
         onMouseLeave={() => setIsHovered(false)}
       >
         {/* Top Notification Bar */}
-        <div className="flex items-center justify-between bg-[#f4f4f4] px-4 py-2.5 text-[10px] md:text-xs text-gray-700">
+        <div className="flex h-[36px] items-center justify-between bg-[#fcfcfc] px-4 text-[13px] md:text-xs text-gray-800 border-b border-gray-100">
           <button className="p-1 hover:text-black">
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-4 w-4 stroke-[1.5]" />
           </button>
           <span className="flex items-center gap-2 font-medium tracking-wide text-center">
-            <Truck className="hidden md:block h-4 w-4" />
-            Free shipping for members or orders over $75.
+            Free Shipping on orders over $50.
+            <span className="underline underline-offset-4">Download Here</span>
           </span>
           <button className="p-1 hover:text-black">
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-4 w-4 stroke-[1.5]" />
           </button>
         </div>
 
-        {/* Main Nav */}
-        <div className="flex h-[72px] items-center justify-between border-b border-gray-100 px-4 md:px-6 relative">
-          {/* Left Links & Logo */}
+        {/* Main Nav Container */}
+        <div className="flex h-[56px] lg:h-[72px] items-center justify-between border-b lg:border-gray-100 px-4 md:px-6 relative">
+          {/* Left: Logo & Desktop Links */}
           <div className="flex items-center lg:gap-8">
             <Link href="/" className="flex items-center mr-4">
               <svg
@@ -227,7 +226,7 @@ export default function NavBar() {
                 height="20"
                 viewBox="0 0 100 50"
                 fill="currentColor"
-                className="text-green-800"
+                className="text-[#092119]"
               >
                 <path d="M10 25 C 20 20, 30 20, 40 25 C 50 30, 60 30, 70 25 C 80 20, 90 20, 95 25 C 90 35, 80 40, 70 40 C 60 40, 50 35, 40 30 C 30 25, 20 25, 10 30 Z" />
                 <circle cx="20" cy="23" r="2" fill="white" />
@@ -305,7 +304,7 @@ export default function NavBar() {
               <div className="flex items-center ml-auto gap-3">
                 {searchQuery && (
                   <button
-                    className="text-[13px] text-gray-500 hover:text-black transition-colors"
+                    className="text-[13px] text-gray-500 hover:text-black"
                     onClick={(e) => {
                       e.stopPropagation();
                       setSearchQuery("");
@@ -315,7 +314,7 @@ export default function NavBar() {
                   </button>
                 )}
                 <button
-                  className="flex h-5 w-5 items-center justify-center rounded-full bg-[#004751] text-white hover:bg-black transition-colors"
+                  className="flex h-5 w-5 items-center justify-center rounded-full bg-[#004751] text-white"
                   onClick={(e) => {
                     e.stopPropagation();
                     setIsSearchOpen(false);
@@ -328,70 +327,55 @@ export default function NavBar() {
             )}
           </div>
 
-          {/* Right Icons */}
-          <div className="flex items-center gap-4 md:gap-5">
-            {/* Mobile Search Icon */}
+          {/* Right Icons Row */}
+          <div className="flex items-center gap-3 md:gap-5">
+            {/* Search Icon (Desktop Only via Toggle) */}
             <button
-              className="lg:hidden text-gray-900 hover:text-black"
+              className="hidden lg:block text-gray-900 hover:text-black"
               onClick={() => {
                 setIsSearchOpen(!isSearchOpen);
-                setIsMobileMenuOpen(false);
               }}
             >
-              <Search className="h-[22px] w-[22px] stroke-[1.5]" />
+              <Search className="h-[24px] w-[24px] stroke-[1.2]" />
             </button>
 
-            <Link
-              href="#"
-              className="hidden lg:block text-gray-900 hover:text-black"
-            >
-              <CircleHelp className="h-[24px] w-[24px] stroke-[1.2]" />
-            </Link>
-            <Link
-              href="#"
-              className="hidden lg:block text-gray-900 hover:text-black"
-            >
-              <MapPin className="h-[24px] w-[24px] stroke-[1.2]" />
-            </Link>
-            <Link
-              href="#"
-              className="hidden lg:block relative text-gray-900 hover:text-black"
-            >
-              <Heart className="h-[24px] w-[24px] stroke-[1.2]" />
+            {/* Help */}
+            <Link href="#" className="text-gray-900 hover:text-black">
+              <CircleHelp className="h-[20px] w-[20px] lg:h-[24px] lg:w-[24px] stroke-[1.2]" />
             </Link>
 
-            {/* User Desktop Dropdown */}
+            {/* Map */}
+            <Link href="#" className="text-gray-900 hover:text-black">
+              <MapPin className="h-[20px] w-[20px] lg:h-[24px] lg:w-[24px] stroke-[1.2]" />
+            </Link>
+
+            {/* Heart */}
+            <Link href="#" className="relative text-gray-900 hover:text-black">
+              <Heart className="h-[20px] w-[20px] lg:h-[24px] lg:w-[24px] stroke-[1.2]" />
+              <span className="absolute -right-2 -top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#092119] text-[9px] font-bold text-white">
+                0
+              </span>
+            </Link>
+
+            {/* User (Desktop Hover & Mobile Icon) */}
             <div
               className="hidden lg:flex group h-full items-center relative px-2 -mx-2 cursor-pointer z-[80]"
               onMouseEnter={handleUserMenuEnter}
               onMouseLeave={handleUserMenuLeave}
             >
-              <Link href="#" className="text-gray-900 hover:text-black peer">
+              <Link
+                href="#"
+                className="text-gray-900 hover:text-black peer relative"
+              >
                 <User className="h-[24px] w-[24px] stroke-[1.2]" />
               </Link>
 
-              {/* Tooltip */}
-              {!isUserMenuOpen && (
-                <div className="absolute top-[100%] right-0 mt-3 bg-[#111] text-white text-[11px] font-bold tracking-wide px-3 py-1.5 opacity-0 peer-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-[60]">
-                  Go to my account
-                </div>
-              )}
-
-              {/* Hover bridge */}
-              {isUserMenuOpen && (
-                <div
-                  className={`absolute right-[-10px] top-[100%] w-[100px] bg-transparent z-[70] ${
-                    isScrolled && !isHovered ? "h-0" : "h-[52px]"
-                  }`}
-                />
-              )}
-
-              {/* User Dropdown Panel */}
+              {/* User Dropdown Panel ... (Kept original logic) */}
               <div
                 className={`fixed right-0 w-[580px] bg-white border-l border-gray-200 shadow-[-10px_0_30px_rgba(0,0,0,0.05)] transition-all duration-300 ease-in-out cursor-default z-[60] overflow-y-auto ${
                   isScrolled && !isHovered
                     ? "top-[108px] h-[calc(100vh-108px)]"
-                    : "top-[170px] h-[calc(100vh-160px)]"
+                    : "top-[160px] h-[calc(100vh-160px)]"
                 } ${
                   isUserMenuOpen
                     ? "opacity-100 translate-x-0 visible"
@@ -411,6 +395,7 @@ export default function NavBar() {
                       <X className="h-5 w-5 stroke-[1.5]" />
                     </button>
                   </div>
+
                   <div className="flex flex-col gap-6">
                     <div>
                       <h3 className="text-[15px] font-medium text-gray-900 mb-2">
@@ -428,11 +413,23 @@ export default function NavBar() {
                       Not a customer yet?{" "}
                       <Link
                         href="#"
-                        className="text-gray-900 underline font-medium"
+                        className="text-gray-900 underline underline-offset-4 decoration-1 hover:decoration-2 font-medium"
                       >
                         Create an account
                       </Link>
                     </p>
+                  </div>
+
+                  <div className="mt-10 pt-6 border-t border-gray-100">
+                    <Link
+                      href="#"
+                      className="flex items-center gap-4 text-gray-900 hover:text-gray-600 transition-colors group/guest"
+                    >
+                      <Package className="h-[22px] w-[22px] stroke-[1.2]" />
+                      <span className="text-[14px] font-medium group-hover/guest:underline underline-offset-4">
+                        Looking for a guest checkout order?
+                      </span>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -441,9 +438,10 @@ export default function NavBar() {
             {/* Mobile User Icon */}
             <Link
               href="/account"
-              className="lg:hidden text-gray-900 hover:text-black"
+              className="lg:hidden relative text-gray-900 hover:text-black"
             >
-              <User className="h-[22px] w-[22px] stroke-[1.5]" />
+              <User className="h-[20px] w-[20px] stroke-[1.2]" />
+              <span className="absolute -right-1.5 -top-1.5 flex h-[14px] w-[14px] items-center justify-center rounded-full bg-[#092119] border border-white"></span>
             </Link>
 
             {/* Cart */}
@@ -451,58 +449,59 @@ export default function NavBar() {
               href="/cart"
               className="relative text-gray-900 hover:text-black"
             >
-              <ShoppingBag className="h-[22px] w-[22px] md:h-[24px] md:w-[24px] stroke-[1.2] md:stroke-[1.5]" />
-              <span className="absolute -right-2 -top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-black text-[9px] font-bold text-white">
+              <ShoppingBag className="h-[20px] w-[20px] lg:h-[24px] lg:w-[24px] stroke-[1.2]" />
+              <span className="absolute -right-2 -top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#092119] text-[9px] font-bold text-white">
                 0
               </span>
             </Link>
 
-            {/* Mobile Hamburger Menu (Right Side) */}
+            {/* Mobile Hamburger Menu */}
             <button
-              className="lg:hidden p-1 text-gray-900 hover:text-black ml-1"
-              onClick={() => {
-                setIsMobileMenuOpen(!isMobileMenuOpen);
-                setIsSearchOpen(false);
-              }}
+              className="lg:hidden ml-1 text-gray-900 hover:text-black flex items-center justify-center h-[24px] w-[24px] mr-6"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? (
-                <X className="h-[26px] w-[26px] stroke-[1.5]" />
+                <X className="h-[24px] w-[24px] stroke-[1.5]" />
               ) : (
-                <Menu className="h-[26px] w-[26px] stroke-[1.5]" />
+                // Custom 2-line menu icon to perfectly match the screenshot
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                >
+                  <line x1="3" y1="9" x2="21" y2="9"></line>
+                  <line x1="3" y1="15" x2="21" y2="15"></line>
+                </svg>
               )}
             </button>
           </div>
         </div>
 
-        {/* Mobile Search Dropdown (Displays when search icon clicked on mobile) */}
-        <div
-          className={`lg:hidden w-full bg-white px-4 py-3 border-b border-gray-200 transition-all ${isSearchOpen ? "block" : "hidden"}`}
-        >
-          <div className="flex items-center border border-black px-3 py-2">
-            <Search className="h-4 w-4 text-gray-500 mr-2" />
-            <input
-              type="text"
-              placeholder="Search..."
-              className="flex-1 outline-none text-sm bg-transparent"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              autoFocus
-            />
-            <button onClick={() => setIsSearchOpen(false)}>
-              <X className="h-4 w-4 text-gray-500" />
-            </button>
-          </div>
+        {/* Permanent Mobile Search Bar (Below Nav) */}
+        <div className="lg:hidden w-full h-[48px] bg-white px-4 border-b border-gray-200 flex items-center">
+          <Search className="h-[18px] w-[18px] text-gray-600 mr-3 stroke-[1.5]" />
+          <input
+            type="text"
+            placeholder="Find a product"
+            className="flex-1 outline-none text-[15px] bg-transparent text-gray-900 placeholder:text-[#333]"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
 
-        {/* Mobile Menu Dropdown (Under Nav Layout) */}
+        {/* Mobile Menu Dropdown (Slides under the search bar) */}
         <div
-          className={`lg:hidden absolute left-0 top-full w-full bg-white shadow-lg overflow-hidden transition-all duration-300 ease-in-out origin-top border-b ${
+          className={`lg:hidden absolute left-0 top-[140px] w-full bg-white shadow-lg overflow-hidden transition-all duration-300 ease-in-out origin-top border-b ${
             isMobileMenuOpen
-              ? "max-h-[calc(100vh-108px)] opacity-100 border-black"
+              ? "max-h-[calc(100vh-140px)] opacity-100 border-black"
               : "max-h-0 opacity-0 border-transparent pointer-events-none"
           }`}
         >
-          <div className="flex flex-col w-full h-full max-h-[calc(100vh-108px)] overflow-y-auto overscroll-contain">
+          <div className="flex flex-col w-full h-full max-h-[calc(100vh-140px)] overflow-y-auto overscroll-contain">
             {/* Mobile Main Links */}
             <div className="flex flex-col px-6 py-4 border-b border-gray-100">
               <Link
@@ -552,7 +551,6 @@ export default function NavBar() {
                     />
                   </button>
 
-                  {/* Accordion Content */}
                   <div
                     className={`overflow-hidden transition-all duration-300 ${mobileExpandedSubNav === name ? "max-h-[500px] mb-4" : "max-h-0"}`}
                   >
@@ -578,25 +576,19 @@ export default function NavBar() {
               ))}
             </div>
 
-            {/* Mobile Footer Links (Help, Store Locator) */}
+            {/* Mobile Footer Links */}
             <div className="bg-gray-50 p-6 flex flex-col gap-5 border-t border-gray-100 pb-12">
               <Link
                 href="#"
                 className="flex items-center gap-3 text-[14px] font-medium text-gray-900"
               >
-                <CircleHelp className="h-5 w-5" /> Help & Support
+                <CircleHelp className="h-5 w-5 stroke-[1.5]" /> Help & Support
               </Link>
               <Link
                 href="#"
                 className="flex items-center gap-3 text-[14px] font-medium text-gray-900"
               >
-                <MapPin className="h-5 w-5" /> Store Locator
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center gap-3 text-[14px] font-medium text-gray-900"
-              >
-                <Heart className="h-5 w-5" /> Wishlist
+                <MapPin className="h-5 w-5 stroke-[1.5]" /> Store Locator
               </Link>
             </div>
           </div>
@@ -635,11 +627,11 @@ export default function NavBar() {
 
         {/* Desktop Mega Menu Dropdown */}
         <div
-          className={`hidden lg:block absolute left-0 top-full w-full bg-white shadow-lg overflow-hidden transition-all duration-500 ease-in-out origin-top border-b ${
+          className={`hidden lg:block absolute left-0 top-[160px] w-full bg-white shadow-lg overflow-hidden transition-all duration-500 ease-in-out origin-top border-b ${
             openSubNav
               ? "max-h-[1200px] opacity-100 border-black"
               : "max-h-0 opacity-0 border-transparent pointer-events-none"
-          }`}
+          } ${isScrolled && !isHovered ? "lg:top-[108px]" : "lg:top-[160px]"}`}
         >
           <div className="flex w-full h-[380px]">
             {/* Column 1 */}
