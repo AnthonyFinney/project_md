@@ -1,5 +1,8 @@
+"use client";
+
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight, Heart, Eye } from 'lucide-react';
+import { motion, Variants } from 'framer-motion';
 
 const products = [
   {
@@ -65,11 +68,40 @@ const products = [
 ];
 
 export default function BestSellersSection() {
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 1, 0.5, 1],
+      },
+    },
+  };
+
   return (
-    <section className="w-full bg-white pt-10 pb-20 overflow-hidden">
+    <motion.section 
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.2 }}
+      variants={containerVariants}
+      className="w-full bg-white pt-10 pb-20 overflow-hidden"
+    >
       <div className="mx-auto w-full max-w-[1440px]">
         {/* Header */}
-        <div className="mb-6 flex items-end justify-between px-6 lg:px-12">
+        <motion.div variants={itemVariants} className="mb-6 flex items-end justify-between px-6 lg:px-12">
           <h2 className="text-[28px] md:text-[32px] font-serif tracking-tight text-[#0a2319]">
             Shop our Best Sellers
           </h2>
@@ -81,16 +113,17 @@ export default function BestSellersSection() {
               <ChevronRight className="h-[18px] w-[18px] stroke-[1.5]" />
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Carousel */}
-        <div className="flex w-full overflow-x-auto border-y border-[#e5e5e5] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        <div className="flex w-full overflow-x-auto overflow-y-hidden pb-4 border-y border-[#e5e5e5] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {/* Left spacer for alignment with header */}
           <div className="shrink-0 w-6 lg:w-12" />
           
           {products.map((product, index) => (
-            <div 
+            <motion.div 
               key={product.id} 
+              variants={itemVariants}
               className={`group relative flex shrink-0 w-[260px] md:w-[300px] lg:w-[310px] flex-col border-r border-[#e5e5e5] bg-white hover:shadow-md transition-shadow ${index === 0 ? 'border-l' : ''}`}
             >
               
@@ -152,14 +185,14 @@ export default function BestSellersSection() {
                 </div>
               </div>
               
-            </div>
+            </motion.div>
           ))}
 
           {/* Right spacer for scrolling past the last item */}
           <div className="shrink-0 w-6 lg:w-12" />
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

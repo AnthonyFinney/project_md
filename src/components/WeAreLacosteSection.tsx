@@ -1,12 +1,44 @@
+"use client";
+
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, Variants } from "framer-motion";
 
 export default function WeAreLacosteSection() {
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 1, 0.5, 1],
+      },
+    },
+  };
+
   return (
-    <section className="w-full bg-white py-10 md:py-20 pb-16 md:pb-32">
+    <motion.section 
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.2 }}
+      variants={containerVariants}
+      className="w-full bg-white py-10 md:py-20 pb-16 md:pb-32 overflow-hidden"
+    >
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-12">
         {/* Header Row */}
-        <div className="mb-4 md:mb-6 flex w-full items-center md:items-end justify-between">
+        <motion.div variants={itemVariants} className="mb-4 md:mb-6 flex w-full items-center md:items-end justify-between">
           <h2 className="flex items-center gap-3 text-[26px] font-serif tracking-tight text-[#0a2319] md:text-[32px]">
             We are Lacoste
             {/* Desktop Logo (hidden on mobile) */}
@@ -68,41 +100,49 @@ export default function WeAreLacosteSection() {
               <ChevronRight className="h-[18px] w-[18px] stroke-[1.5]" />
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Content Row */}
         <div className="flex w-full flex-col lg:flex-row lg:items-end justify-between">
           {/* Left Image Area */}
           <div className="w-full lg:w-[60%]">
             <div className="relative aspect-[4/5] md:aspect-[1.35/1] w-full bg-[#f4f4f4] overflow-hidden">
-              <Image
-                src="/hero_spring_summer.png" // placeholder
-                alt="Man playing tennis"
-                fill
-                sizes="(max-width: 1024px) 100vw, 60vw"
-                className="object-cover"
-                loading="eager"
-              />
+              <motion.div
+                initial={{ scale: 1.05 }}
+                whileInView={{ scale: 1 }}
+                transition={{ duration: 1.5, ease: [0.25, 1, 0.5, 1] }}
+                viewport={{ once: false }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src="/hero_spring_summer.png" // placeholder
+                  alt="Man playing tennis"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  className="object-cover"
+                  loading="eager"
+                />
+              </motion.div>
             </div>
           </div>
 
           {/* Right Text Area */}
           <div className="w-full lg:w-[32%] flex flex-col pt-6 md:pt-10 lg:pt-0 md:mr-auto md:ml-10 relative">
-            <h3 className="mb-3 md:mb-4 text-[24px] font-serif tracking-tight text-[#0a2319] md:text-[32px]">
+            <motion.h3 variants={itemVariants} className="mb-3 md:mb-4 text-[24px] font-serif tracking-tight text-[#0a2319] md:text-[32px]">
               Life is a Beautiful Sport
-            </h3>
-            <p className="mb-8 md:mb-10 text-[15px] leading-[1.6] text-[#333] md:text-[#4a4a4a]">
+            </motion.h3>
+            <motion.p variants={itemVariants} className="mb-8 md:mb-10 text-[15px] leading-[1.6] text-[#333] md:text-[#4a4a4a]">
               Lacoste reaffirms what defines its identity: a style born from
               tennis, carried by a free, effortless French elegance in motion. A
               way of approaching sport beyond performance: as an attitude, a
               gesture, a way of playing and of living.
-            </p>
-            <button className="w-fit bg-[#092119] px-6 py-3.5 md:px-8 md:py-[14px] text-[11px] md:text-[12px] font-bold tracking-widest text-white transition-colors hover:bg-black">
+            </motion.p>
+            <motion.button variants={itemVariants} className="w-fit bg-[#092119] px-6 py-3.5 md:px-8 md:py-[14px] text-[11px] md:text-[12px] font-bold tracking-widest text-white transition-colors hover:bg-black">
               SHOP NEW ARRIVALS
-            </button>
+            </motion.button>
 
             {/* Mobile Pagination (hidden on desktop) */}
-            <div className="mt-12 flex w-full items-center justify-end gap-3 text-sm font-semibold text-[#0a2319] md:hidden">
+            <motion.div variants={itemVariants} className="mt-12 flex w-full items-center justify-end gap-3 text-sm font-semibold text-[#0a2319] md:hidden">
               <button className="text-gray-300 hover:text-black transition-colors">
                 <ChevronLeft className="h-[22px] w-[22px] stroke-[1]" />
               </button>
@@ -110,10 +150,10 @@ export default function WeAreLacosteSection() {
               <button className="text-black hover:text-gray-600 transition-colors">
                 <ChevronRight className="h-[22px] w-[22px] stroke-[1]" />
               </button>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
