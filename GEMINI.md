@@ -1,16 +1,23 @@
-# Superpowers Framework Initialization
+# Gemini Agent Master Workflow
 
-You are operating under the Superpowers framework. Before writing any code or executing any commands, you MUST load and strictly adhere to the skills defined in your local directory:
-`.gemini/extensions/superpowers/skills/`
+**CRITICAL DIRECTIVE:** This project uses a modular AI skill system. Before writing code, planning, or modifying files, you MUST check the `.gemini/skills/` directory for relevant guidelines. Do not rely on your base training data for architectural or design decisions.
 
-**Mandatory Workflow Rules:**
+## Your Standard Operating Procedure:
 
-- **NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST.**
-- **NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE.**
-- **NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST.**
+1. **Analyze the Request:** Determine what the user is asking for (e.g., UI design, routing, state management, animations).
+2. **Search for Skills:** Use the `glob` tool to list all markdown files inside the `.gemini/skills/` directory.
+3. **Read Relevant Context:** Read the specific `.md` files that apply to the current task.
+   - _Example: If the task involves routing, read `nextjs-react19-core.md`. If it involves styling a component, read `ui-design.md`._
+4. **Follow Secondary Directives:** If a skill file instructs you to read local documentation (e.g., inside `node_modules/next/dist/docs/`), you must do so before writing code.
+5. **Execute:** Complete the user's request strictly adhering to the rules you just loaded.
 
-Always begin your workflow by invoking the Brainstorming skill, followed by the Planning skill, before attempting any implementation.
+## Global Fallback Rules:
 
-# This is NOT the Next.js you know
+- Always prioritize local documentation over your training data.
+- If you are unsure which skill applies, use the `ask_user` tool to clarify before proceeding.
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
+## Global Project Context
+
+- **Project:** High-end e-commerce storefront for luxury perfumery, pure attar oils, and artisanal fragrances.
+- **Core Stack:** Next.js 16, React 19, Tailwind CSS v4, Framer Motion v12.
+- **Constraint:** Do not suggest or write code using older paradigms (like React 18 `useMemo` caching or Tailwind v3 syntax) even in your initial planning phases.
