@@ -1,8 +1,11 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section id="hero-section" className="relative h-[80vh] w-full min-h-[600px] overflow-hidden bg-gray-100">
+    <section
+      id="hero-section"
+      className="relative h-[80vh] w-full min-h-[600px] overflow-hidden bg-gray-100"
+    >
       {/* Background Image */}
       <Image
         src="/hero_spring_summer.png"
@@ -11,8 +14,9 @@ export default function Hero() {
         sizes="100vw"
         className="object-cover object-center"
         priority
+        loading="eager"
       />
-      
+
       {/* Overlay Content */}
       <div className="absolute inset-0 flex items-end bg-black/10">
         <div className="px-8 pb-16 md:px-16 md:pb-24">

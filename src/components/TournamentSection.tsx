@@ -13,6 +13,7 @@ export default function TournamentSection() {
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover object-center"
+            loading="eager"
           />
 
           {/* Mobile Pagination overlaid on image (hidden on md+) */}
