@@ -2,34 +2,35 @@
 
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { motion, Variants } from "framer-motion";
+import { m, Variants } from "framer-motion";
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20, filter: "blur(4px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.8,
+      ease: [0.25, 1, 0.5, 1],
+    },
+  },
+};
 
 export default function WeAreLacosteSection() {
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.25, 1, 0.5, 1],
-      },
-    },
-  };
-
   return (
-    <motion.section 
+    <m.section 
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.2 }}
@@ -38,7 +39,7 @@ export default function WeAreLacosteSection() {
     >
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-12">
         {/* Header Row */}
-        <motion.div variants={itemVariants} className="mb-4 md:mb-6 flex w-full items-center md:items-end justify-between">
+        <m.div variants={itemVariants} className="mb-4 md:mb-6 flex w-full items-center md:items-end justify-between">
           <h2 className="flex items-center gap-3 text-[26px] font-serif tracking-tight text-[#0a2319] md:text-[32px]">
             We are Lacoste
             {/* Desktop Logo (hidden on mobile) */}
@@ -100,16 +101,16 @@ export default function WeAreLacosteSection() {
               <ChevronRight className="h-[18px] w-[18px] stroke-[1.5]" />
             </button>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Content Row */}
         <div className="flex w-full flex-col lg:flex-row lg:items-end justify-between">
           {/* Left Image Area */}
           <div className="w-full lg:w-[60%]">
             <div className="relative aspect-[4/5] md:aspect-[1.35/1] w-full bg-[#f4f4f4] overflow-hidden">
-              <motion.div
-                initial={{ scale: 1.05 }}
-                whileInView={{ scale: 1 }}
+              <m.div
+                initial={{ scale: 1.05, filter: "blur(10px)" }}
+                whileInView={{ scale: 1, filter: "blur(0px)" }}
                 transition={{ duration: 1.5, ease: [0.25, 1, 0.5, 1] }}
                 viewport={{ once: false }}
                 className="absolute inset-0"
@@ -122,27 +123,27 @@ export default function WeAreLacosteSection() {
                   className="object-cover"
                   loading="eager"
                 />
-              </motion.div>
+              </m.div>
             </div>
           </div>
 
           {/* Right Text Area */}
           <div className="w-full lg:w-[32%] flex flex-col pt-6 md:pt-10 lg:pt-0 md:mr-auto md:ml-10 relative">
-            <motion.h3 variants={itemVariants} className="mb-3 md:mb-4 text-[24px] font-serif tracking-tight text-[#0a2319] md:text-[32px]">
+            <m.h3 variants={itemVariants} className="mb-3 md:mb-4 text-[24px] font-serif tracking-tight text-[#0a2319] md:text-[32px]">
               Life is a Beautiful Sport
-            </motion.h3>
-            <motion.p variants={itemVariants} className="mb-8 md:mb-10 text-[15px] leading-[1.6] text-[#333] md:text-[#4a4a4a]">
+            </m.h3>
+            <m.p variants={itemVariants} className="mb-8 md:mb-10 text-[15px] leading-[1.6] text-[#333] md:text-[#4a4a4a]">
               Lacoste reaffirms what defines its identity: a style born from
               tennis, carried by a free, effortless French elegance in motion. A
               way of approaching sport beyond performance: as an attitude, a
               gesture, a way of playing and of living.
-            </motion.p>
-            <motion.button variants={itemVariants} className="w-fit bg-[#092119] px-6 py-3.5 md:px-8 md:py-[14px] text-[11px] md:text-[12px] font-bold tracking-widest text-white transition-colors hover:bg-black">
+            </m.p>
+            <m.button variants={itemVariants} className="w-fit bg-[#092119] px-6 py-3.5 md:px-8 md:py-[14px] text-[11px] md:text-[12px] font-bold tracking-widest text-white transition-colors hover:bg-black">
               SHOP NEW ARRIVALS
-            </motion.button>
+            </m.button>
 
             {/* Mobile Pagination (hidden on desktop) */}
-            <motion.div variants={itemVariants} className="mt-12 flex w-full items-center justify-end gap-3 text-sm font-semibold text-[#0a2319] md:hidden">
+            <m.div variants={itemVariants} className="mt-12 flex w-full items-center justify-end gap-3 text-sm font-semibold text-[#0a2319] md:hidden">
               <button className="text-gray-300 hover:text-black transition-colors">
                 <ChevronLeft className="h-[22px] w-[22px] stroke-[1]" />
               </button>
@@ -150,10 +151,10 @@ export default function WeAreLacosteSection() {
               <button className="text-black hover:text-gray-600 transition-colors">
                 <ChevronRight className="h-[22px] w-[22px] stroke-[1]" />
               </button>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </div>
-    </motion.section>
+    </m.section>
   );
 }

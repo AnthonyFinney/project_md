@@ -8,36 +8,37 @@ import {
   Truck,
   ArrowRight,
 } from "lucide-react";
-import { motion, Variants } from "framer-motion";
+import { m, Variants } from "framer-motion";
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20, filter: "blur(4px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.8,
+      ease: [0.25, 1, 0.5, 1],
+    },
+  },
+};
 
 export default function Footer() {
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.25, 1, 0.5, 1],
-      },
-    },
-  };
-
   return (
     <footer className="w-full bg-[#0a2319] text-white overflow-hidden">
       {/* Top Banner: App Download */}
-      <motion.div 
+      <m.div 
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.2 }}
@@ -45,7 +46,7 @@ export default function Footer() {
         className="mx-auto w-full max-w-[1440px] px-5 sm:px-6 lg:px-12"
       >
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between py-10 lg:py-12 border-b border-white/10 gap-6 md:gap-0">
-          <motion.div variants={itemVariants} className="flex items-center gap-6">
+          <m.div variants={itemVariants} className="flex items-center gap-6">
             {/* Hidden on mobile, makes no sense to scan a QR code on the device you're holding */}
             <div className="hidden sm:flex h-20 w-20 shrink-0 items-center justify-center bg-white p-1">
               <div className="flex h-full w-full items-center justify-center border border-black">
@@ -65,57 +66,57 @@ export default function Footer() {
                 code APP15
               </p>
             </div>
-          </motion.div>
-          <motion.div variants={itemVariants} className="flex w-full md:w-auto gap-3 sm:gap-4 mt-2 md:mt-0">
+          </m.div>
+          <m.div variants={itemVariants} className="flex w-full md:w-auto gap-3 sm:gap-4 mt-2 md:mt-0">
             <div className="flex flex-1 md:flex-none h-12 md:h-10 md:w-[140px] cursor-pointer items-center justify-center rounded-md border border-white/30 bg-black text-[11px] md:text-xs font-semibold text-center leading-tight hover:bg-gray-900 transition-colors">
               Download on the <br /> App Store
             </div>
             <div className="flex flex-1 md:flex-none h-12 md:h-10 md:w-[140px] cursor-pointer items-center justify-center rounded-md border border-white/30 bg-black text-[11px] md:text-xs font-semibold text-center leading-tight hover:bg-gray-900 transition-colors">
               GET IT ON <br /> Google Play
             </div>
-          </motion.div>
+          </m.div>
         </div>
-      </motion.div>
+      </m.div>
 
       {/* Services Row */}
       <div className="border-b border-white/10">
-        <motion.div 
+        <m.div 
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.2 }}
           variants={containerVariants}
           className="mx-auto grid w-full max-w-[1440px] grid-cols-2 gap-y-10 gap-x-4 px-5 py-10 sm:px-6 lg:px-12 md:flex md:flex-nowrap md:justify-between md:py-12"
         >
-          <motion.div variants={itemVariants} className="flex flex-col items-center gap-3 md:w-1/4 text-center">
+          <m.div variants={itemVariants} className="flex flex-col items-center gap-3 md:w-1/4 text-center">
             <Headphones className="h-6 w-6 stroke-[1.5]" />
             <span className="text-[12px] lg:text-[13px] font-medium">
               Customer Service
             </span>
-          </motion.div>
-          <motion.div variants={itemVariants} className="flex flex-col items-center gap-3 md:w-1/4 text-center">
+          </m.div>
+          <m.div variants={itemVariants} className="flex flex-col items-center gap-3 md:w-1/4 text-center">
             <RefreshCw className="h-6 w-6 stroke-[1.5]" />
             <span className="text-[12px] lg:text-[13px] font-medium">
               Free Returns
             </span>
-          </motion.div>
-          <motion.div variants={itemVariants} className="flex flex-col items-center gap-3 md:w-1/4 text-center">
+          </m.div>
+          <m.div variants={itemVariants} className="flex flex-col items-center gap-3 md:w-1/4 text-center">
             <CreditCard className="h-6 w-6 stroke-[1.5]" />
             <span className="text-[12px] lg:text-[13px] font-medium">
               Safe & Secure Payment
             </span>
-          </motion.div>
-          <motion.div variants={itemVariants} className="flex flex-col items-center gap-3 md:w-1/4 text-center">
+          </m.div>
+          <m.div variants={itemVariants} className="flex flex-col items-center gap-3 md:w-1/4 text-center">
             <Truck className="h-6 w-6 stroke-[1.5]" />
             <span className="text-[12px] lg:text-[13px] font-medium">
               Free Shipping for Members
             </span>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </div>
 
       {/* Main Footer Links & Newsletter */}
       <div className="border-b border-white/10">
-        <motion.div 
+        <m.div 
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.1 }}
@@ -123,7 +124,7 @@ export default function Footer() {
           className="mx-auto flex w-full max-w-[1440px] flex-col lg:flex-row"
         >
           {/* Newsletter Column */}
-          <motion.div variants={itemVariants} className="w-full border-b border-white/10 p-6 sm:p-8 lg:w-[28%] lg:border-b-0 lg:border-r lg:p-12">
+          <m.div variants={itemVariants} className="w-full border-b border-white/10 p-6 sm:p-8 lg:w-[28%] lg:border-b-0 lg:border-r lg:p-12">
             <div className="mb-8 lg:mb-10 flex items-center gap-4">
               <div className="flex h-[60px] w-[60px] lg:h-[72px] lg:w-[72px] shrink-0 items-center justify-center rounded-full border border-white text-center font-serif text-[9px] lg:text-[10px] leading-tight">
                 LE CLUB
@@ -153,10 +154,10 @@ export default function Footer() {
                 SIGN UP <ArrowRight className="ml-2 h-4 w-4 stroke-[1.5]" />
               </button>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Links & Payments Column */}
-          <motion.div variants={itemVariants} className="flex w-full flex-col justify-between border-b border-white/10 p-6 sm:p-8 lg:w-[54%] lg:border-b-0 lg:border-r lg:p-12">
+          <m.div variants={itemVariants} className="flex w-full flex-col justify-between border-b border-white/10 p-6 sm:p-8 lg:w-[54%] lg:border-b-0 lg:border-r lg:p-12">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 lg:gap-8">
               <div className="flex flex-col gap-3">
                 <h4 className="mb-1 md:mb-2 text-[15px] font-semibold">
@@ -295,10 +296,10 @@ export default function Footer() {
                 FedEx
               </span>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Socials Column */}
-          <motion.div variants={itemVariants} className="flex w-full flex-row flex-wrap lg:flex-col gap-5 p-6 sm:p-8 lg:w-[18%] lg:p-12">
+          <m.div variants={itemVariants} className="flex w-full flex-row flex-wrap lg:flex-col gap-5 p-6 sm:p-8 lg:w-[18%] lg:p-12">
             <Link
               href="#"
               className="flex items-center gap-3 text-[13px] text-gray-300 hover:text-white hover:underline"
@@ -353,33 +354,33 @@ export default function Footer() {
               </span>{" "}
               <span className="hidden lg:inline">YouTube</span>
             </Link>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </div>
 
       {/* Giant LACOSTE Text */}
-      <motion.div 
+      <m.div 
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.5 }}
         variants={containerVariants}
         className="flex w-full justify-center overflow-hidden bg-[#0a2319] py-6 lg:py-8"
       >
-        <motion.h1 variants={itemVariants} className="select-none font-serif text-[24vw] leading-[0.75] tracking-tighter text-[#e8e4db]">
+        <m.h1 variants={itemVariants} className="select-none font-serif text-[24vw] leading-[0.75] tracking-tighter text-[#e8e4db]">
           LACOSTE
-        </motion.h1>
-      </motion.div>
+        </m.h1>
+      </m.div>
 
       {/* Bottom Legal Bar */}
       <div className="w-full bg-white py-6">
-        <motion.div 
+        <m.div 
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.5 }}
           variants={containerVariants}
           className="mx-auto flex w-full max-w-[1440px] flex-col items-center justify-between px-5 text-[11px] font-medium text-gray-500 lg:flex-row sm:px-6 lg:px-12"
         >
-          <motion.div variants={itemVariants} className="mb-5 flex flex-wrap justify-center gap-4 sm:gap-6 lg:mb-0 text-center">
+          <m.div variants={itemVariants} className="mb-5 flex flex-wrap justify-center gap-4 sm:gap-6 lg:mb-0 text-center">
             <Link href="#" className="hover:text-black">
               Sitemap
             </Link>
@@ -395,8 +396,8 @@ export default function Footer() {
             <Link href="#" className="hover:text-black">
               Cookie Settings
             </Link>
-          </motion.div>
-          <motion.div variants={itemVariants} className="flex cursor-pointer items-center gap-2 hover:text-black">
+          </m.div>
+          <m.div variants={itemVariants} className="flex cursor-pointer items-center gap-2 hover:text-black">
             <div className="flex h-[14px] w-[20px] items-center justify-center overflow-hidden rounded-[2px] border border-gray-200">
               {/* Fake US Flag */}
               <div className="h-full w-full bg-stripes-us relative">
@@ -407,8 +408,8 @@ export default function Footer() {
             <span className="text-black transition-colors hover:underline">
               United States
             </span>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </div>
     </footer>
   );
