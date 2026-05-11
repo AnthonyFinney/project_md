@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { m, Variants } from "framer-motion";
 
 const containerVariants: Variants = {
@@ -33,7 +32,7 @@ export default function Hero() {
       id="hero-section"
       className="relative h-[80vh] w-full min-h-[600px] overflow-hidden bg-gray-100"
     >
-      {/* Background Image */}
+      {/* Background Video */}
       <m.div
         initial={{ scale: 1.1, filter: "blur(10px)" }}
         whileInView={{ scale: 1, filter: "blur(0px)" }}
@@ -41,14 +40,13 @@ export default function Hero() {
         viewport={{ once: false }}
         className="absolute inset-0"
       >
-        <Image
-          src="/hero_spring_summer.png"
-          alt="New Spring-Summer Collection"
-          fill
-          sizes="100vw"
-          className="object-cover object-center"
-          priority
-          loading="eager"
+        <video
+          src="/videos/Hero_video.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="h-full w-full object-cover object-center"
         />
       </m.div>
 
