@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Search,
   CircleHelp,
@@ -220,63 +221,15 @@ export default function NavBar() {
           {/* Left: Logo & Desktop Links */}
           <div className="flex items-center lg:gap-8">
             <Link href="/" className="flex items-center mr-4">
-              <svg
-                width="40"
-                height="20"
-                viewBox="0 0 100 50"
-                fill="currentColor"
-                className="text-[#092119]"
-              >
-                <path d="M10 25 C 20 20, 30 20, 40 25 C 50 30, 60 30, 70 25 C 80 20, 90 20, 95 25 C 90 35, 80 40, 70 40 C 60 40, 50 35, 40 30 C 30 25, 20 25, 10 30 Z" />
-                <circle cx="20" cy="23" r="2" fill="white" />
-                <path
-                  d="M85 25 C 90 23, 95 23, 98 25"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  fill="none"
-                />
-                <path
-                  d="M15 35 C 25 38, 35 38, 45 35"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  fill="none"
-                />
-              </svg>
+              <Image
+                src="/Logo.svg"
+                alt="Logo"
+                width={160}
+                height={140}
+                className="w-[80px] h-auto lg:w-[160px] lg:h-auto text-[#092119]"
+                loading="eager"
+              />
             </Link>
-
-            {/* Desktop Main Links */}
-            <div className="hidden gap-7 lg:flex">
-              <Link
-                href="#"
-                className="text-[15px] font-medium text-gray-900 hover:underline hover:underline-offset-8"
-              >
-                Men
-              </Link>
-              <Link
-                href="#"
-                className="text-[15px] font-medium text-gray-900 hover:underline hover:underline-offset-8"
-              >
-                Women
-              </Link>
-              <Link
-                href="#"
-                className="text-[15px] font-medium text-gray-900 hover:underline hover:underline-offset-8"
-              >
-                Kids
-              </Link>
-              <Link
-                href="#"
-                className="text-[15px] font-medium text-[#008a54] hover:underline hover:underline-offset-8"
-              >
-                Sale
-              </Link>
-              <Link
-                href="#"
-                className="text-[15px] font-medium text-gray-900 hover:underline hover:underline-offset-8"
-              >
-                Discover
-              </Link>
-            </div>
           </div>
 
           {/* Desktop Search Bar (Hidden on Mobile) */}
@@ -501,34 +454,6 @@ export default function NavBar() {
           }`}
         >
           <div className="flex flex-col w-full h-full max-h-[calc(100vh-140px)] overflow-y-auto overscroll-contain">
-            {/* Mobile Main Links */}
-            <div className="flex flex-col px-6 py-4 border-b border-gray-100">
-              <Link
-                href="#"
-                className="py-3 text-[16px] font-medium text-gray-900"
-              >
-                Men
-              </Link>
-              <Link
-                href="#"
-                className="py-3 text-[16px] font-medium text-gray-900"
-              >
-                Women
-              </Link>
-              <Link
-                href="#"
-                className="py-3 text-[16px] font-medium text-gray-900"
-              >
-                Kids
-              </Link>
-              <Link
-                href="#"
-                className="py-3 text-[16px] font-medium text-[#008a54]"
-              >
-                Sale
-              </Link>
-            </div>
-
             {/* Mobile SubNav Accordions */}
             <div className="flex flex-col px-6 py-2">
               {Object.entries(subNavData).map(([name, data]) => (
