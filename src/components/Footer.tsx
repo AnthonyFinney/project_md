@@ -38,7 +38,7 @@ export default function Footer() {
   return (
     <footer className="w-full bg-[#0a2319] text-white overflow-hidden">
       {/* Top Banner: App Download */}
-      <m.div 
+      <m.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.2 }}
@@ -67,7 +67,10 @@ export default function Footer() {
               </p>
             </div>
           </m.div>
-          <m.div variants={itemVariants} className="flex w-full md:w-auto gap-3 sm:gap-4 mt-2 md:mt-0">
+          <m.div
+            variants={itemVariants}
+            className="flex w-full md:w-auto gap-3 sm:gap-4 mt-2 md:mt-0"
+          >
             <div className="flex flex-1 md:flex-none h-12 md:h-10 md:w-[140px] cursor-pointer items-center justify-center rounded-md border border-white/30 bg-black text-[11px] md:text-xs font-semibold text-center leading-tight hover:bg-gray-900 transition-colors">
               Download on the <br /> App Store
             </div>
@@ -80,32 +83,44 @@ export default function Footer() {
 
       {/* Services Row */}
       <div className="border-b border-white/10">
-        <m.div 
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.2 }}
           variants={containerVariants}
           className="mx-auto grid w-full max-w-[1440px] grid-cols-2 gap-y-10 gap-x-4 px-5 py-10 sm:px-6 lg:px-12 md:flex md:flex-nowrap md:justify-between md:py-12"
         >
-          <m.div variants={itemVariants} className="flex flex-col items-center gap-3 md:w-1/4 text-center">
+          <m.div
+            variants={itemVariants}
+            className="flex flex-col items-center gap-3 md:w-1/4 text-center"
+          >
             <Headphones className="h-6 w-6 stroke-[1.5]" />
             <span className="text-[12px] lg:text-[13px] font-medium">
               Customer Service
             </span>
           </m.div>
-          <m.div variants={itemVariants} className="flex flex-col items-center gap-3 md:w-1/4 text-center">
+          <m.div
+            variants={itemVariants}
+            className="flex flex-col items-center gap-3 md:w-1/4 text-center"
+          >
             <RefreshCw className="h-6 w-6 stroke-[1.5]" />
             <span className="text-[12px] lg:text-[13px] font-medium">
               Free Returns
             </span>
           </m.div>
-          <m.div variants={itemVariants} className="flex flex-col items-center gap-3 md:w-1/4 text-center">
+          <m.div
+            variants={itemVariants}
+            className="flex flex-col items-center gap-3 md:w-1/4 text-center"
+          >
             <CreditCard className="h-6 w-6 stroke-[1.5]" />
             <span className="text-[12px] lg:text-[13px] font-medium">
               Safe & Secure Payment
             </span>
           </m.div>
-          <m.div variants={itemVariants} className="flex flex-col items-center gap-3 md:w-1/4 text-center">
+          <m.div
+            variants={itemVariants}
+            className="flex flex-col items-center gap-3 md:w-1/4 text-center"
+          >
             <Truck className="h-6 w-6 stroke-[1.5]" />
             <span className="text-[12px] lg:text-[13px] font-medium">
               Free Shipping for Members
@@ -116,7 +131,7 @@ export default function Footer() {
 
       {/* Main Footer Links & Newsletter */}
       <div className="border-b border-white/10">
-        <m.div 
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.1 }}
@@ -124,7 +139,10 @@ export default function Footer() {
           className="mx-auto flex w-full max-w-[1440px] flex-col lg:flex-row"
         >
           {/* Newsletter Column */}
-          <m.div variants={itemVariants} className="w-full border-b border-white/10 p-6 sm:p-8 lg:w-[28%] lg:border-b-0 lg:border-r lg:p-12">
+          <m.div
+            variants={itemVariants}
+            className="w-full border-b border-white/10 p-6 sm:p-8 lg:w-[28%] lg:border-b-0 lg:border-r lg:p-12"
+          >
             <div className="mb-8 lg:mb-10 flex items-center gap-4">
               <div className="flex h-[60px] w-[60px] lg:h-[72px] lg:w-[72px] shrink-0 items-center justify-center rounded-full border border-white text-center font-serif text-[9px] lg:text-[10px] leading-tight">
                 LE CLUB
@@ -157,7 +175,10 @@ export default function Footer() {
           </m.div>
 
           {/* Links & Payments Column */}
-          <m.div variants={itemVariants} className="flex w-full flex-col justify-between border-b border-white/10 p-6 sm:p-8 lg:w-[54%] lg:border-b-0 lg:border-r lg:p-12">
+          <m.div
+            variants={itemVariants}
+            className="flex w-full flex-col justify-between border-b border-white/10 p-6 sm:p-8 lg:w-[54%] lg:border-b-0 lg:border-r lg:p-12"
+          >
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 lg:gap-8">
               <div className="flex flex-col gap-3">
                 <h4 className="mb-1 md:mb-2 text-[15px] font-semibold">
@@ -299,7 +320,10 @@ export default function Footer() {
           </m.div>
 
           {/* Socials Column */}
-          <m.div variants={itemVariants} className="flex w-full flex-row flex-wrap lg:flex-col gap-5 p-6 sm:p-8 lg:w-[18%] lg:p-12">
+          <m.div
+            variants={itemVariants}
+            className="flex w-full flex-row flex-wrap lg:flex-col gap-5 p-6 sm:p-8 lg:w-[18%] lg:p-12"
+          >
             <Link
               href="#"
               className="flex items-center gap-3 text-[13px] text-gray-300 hover:text-white hover:underline"
@@ -359,28 +383,34 @@ export default function Footer() {
       </div>
 
       {/* Giant LACOSTE Text */}
-      <m.div 
+      <m.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.5 }}
         variants={containerVariants}
         className="flex w-full justify-center overflow-hidden bg-[#0a2319] py-6 lg:py-8"
       >
-        <m.h1 variants={itemVariants} className="select-none font-serif text-[24vw] leading-[0.75] tracking-tighter text-[#e8e4db]">
+        <m.h1
+          variants={itemVariants}
+          className="select-none font-serif text-[24vw] leading-[0.75] tracking-tighter text-[#fcf4e6]"
+        >
           LACOSTE
         </m.h1>
       </m.div>
 
       {/* Bottom Legal Bar */}
-      <div className="w-full bg-white py-6">
-        <m.div 
+      <div className="w-full bg-[#fcf4e6] py-6">
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.5 }}
           variants={containerVariants}
           className="mx-auto flex w-full max-w-[1440px] flex-col items-center justify-between px-5 text-[11px] font-medium text-gray-500 lg:flex-row sm:px-6 lg:px-12"
         >
-          <m.div variants={itemVariants} className="mb-5 flex flex-wrap justify-center gap-4 sm:gap-6 lg:mb-0 text-center">
+          <m.div
+            variants={itemVariants}
+            className="mb-5 flex flex-wrap justify-center gap-4 sm:gap-6 lg:mb-0 text-center"
+          >
             <Link href="#" className="hover:text-black">
               Sitemap
             </Link>
@@ -397,7 +427,10 @@ export default function Footer() {
               Cookie Settings
             </Link>
           </m.div>
-          <m.div variants={itemVariants} className="flex cursor-pointer items-center gap-2 hover:text-black">
+          <m.div
+            variants={itemVariants}
+            className="flex cursor-pointer items-center gap-2 hover:text-black"
+          >
             <div className="flex h-[14px] w-[20px] items-center justify-center overflow-hidden rounded-[2px] border border-gray-200">
               {/* Fake US Flag */}
               <div className="h-full w-full bg-stripes-us relative">

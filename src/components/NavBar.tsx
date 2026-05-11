@@ -198,17 +198,17 @@ export default function NavBar() {
 
       <nav
         ref={navRef}
-        className="fixed top-0 left-0 z-50 flex w-full flex-col bg-white shadow-sm"
+        className="fixed top-0 left-0 z-50 flex w-full flex-col shadow-sm bg-metallic-nav"
         style={{ overflowAnchor: "none" }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         {/* Top Notification Bar */}
-        <div className="flex h-[36px] items-center justify-between bg-[#fcfcfc] px-4 text-[13px] md:text-xs text-gray-800 border-b border-gray-100">
+        <div className="flex h-[36px] items-center justify-between bg-transparent px-4 text-[13px] md:text-xs text-gray-800">
           <button className="p-1 hover:text-black">
             <ChevronLeft className="h-4 w-4 stroke-[1.5]" />
           </button>
-          <span className="flex items-center gap-2 font-medium tracking-wide text-center">
+          <span className="flex items-center gap-2 font-medium tracking-wide text-center underline underline-offset-4">
             Free Shipping on orders.
           </span>
           <button className="p-1 hover:text-black">
@@ -217,18 +217,19 @@ export default function NavBar() {
         </div>
 
         {/* Main Nav Container */}
-        <div className="flex h-[56px] lg:h-[72px] items-center justify-between border-b lg:border-gray-100 px-4 md:px-6 relative">
+        <div className="flex h-[56px] lg:h-[72px] items-center justify-between px-4 md:px-6 relative after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-px after:w-[70%] lg:after:bg-black">
           {/* Left: Logo & Desktop Links */}
           <div className="flex items-center lg:gap-8">
             <Link href="/" className="flex items-center mr-4">
-              <Image
-                src="/Logo.svg"
-                alt="Logo"
-                width={160}
-                height={140}
-                className="w-[80px] h-auto lg:w-[160px] lg:h-auto text-[#092119]"
-                loading="eager"
-              />
+              <div className="relative w-[80px] h-[70px] lg:w-[160px] lg:h-[140px] text-[#092119] lg:mb-5">
+                <Image
+                  src="/Logo.svg"
+                  alt="Logo"
+                  fill
+                  className="object-contain" // Ensures the logo never stretches
+                  priority
+                />
+              </div>
             </Link>
           </div>
 
@@ -236,7 +237,7 @@ export default function NavBar() {
           <div
             className={`hidden lg:flex items-center transition-all duration-300 ${
               isSearchOpen
-                ? "flex-1 border border-[#008a54] px-4 py-2.5 bg-white mx-8"
+                ? "flex-1 border border-black px-4 py-2.5 bg-transparent mx-8"
                 : "w-[380px] border-b border-black pb-1.5 ml-8"
             }`}
             onClick={() => {
@@ -322,9 +323,9 @@ export default function NavBar() {
                 <User className="h-[24px] w-[24px] stroke-[1.2]" />
               </Link>
 
-              {/* User Dropdown Panel ... (Kept original logic) */}
+              {/* User Dropdown Panel */}
               <div
-                className={`fixed right-0 w-[580px] bg-white border-l border-gray-200 shadow-[-10px_0_30px_rgba(0,0,0,0.05)] transition-all duration-300 ease-in-out cursor-default z-[60] overflow-y-auto ${
+                className={`fixed right-0 w-[580px] bg-metallic-nav border-l border-black shadow-[-10px_0_30px_rgba(0,0,0,0.05)] transition-all duration-300 ease-in-out cursor-default z-[60] overflow-y-auto ${
                   isScrolled && !isHovered
                     ? "top-[108px] h-[calc(100vh-108px)]"
                     : "top-[160px] h-[calc(100vh-160px)]"
@@ -372,7 +373,7 @@ export default function NavBar() {
                     </p>
                   </div>
 
-                  <div className="mt-10 pt-6 border-t border-gray-100">
+                  <div className="mt-10 pt-6 border-t border-black">
                     <Link
                       href="#"
                       className="flex items-center gap-4 text-gray-900 hover:text-gray-600 transition-colors group/guest"
@@ -393,7 +394,7 @@ export default function NavBar() {
               className="lg:hidden relative text-gray-900 hover:text-black"
             >
               <User className="h-[20px] w-[20px] stroke-[1.2]" />
-              <span className="absolute -right-1.5 -top-1.5 flex h-[14px] w-[14px] items-center justify-center rounded-full bg-[#092119] border border-white"></span>
+              <span className="absolute -right-1.5 -top-1.5 flex h-[14px] w-[14px] items-center justify-center rounded-full bg-[#092119] border border-black"></span>
             </Link>
 
             {/* Cart */}
@@ -415,7 +416,6 @@ export default function NavBar() {
               {isMobileMenuOpen ? (
                 <X className="h-[24px] w-[24px] stroke-[1.5]" />
               ) : (
-                // Custom 2-line menu icon to perfectly match the screenshot
                 <svg
                   width="22"
                   height="22"
@@ -434,7 +434,7 @@ export default function NavBar() {
         </div>
 
         {/* Permanent Mobile Search Bar (Below Nav) */}
-        <div className="lg:hidden w-full h-[48px] bg-white px-4 border-b border-gray-200 flex items-center">
+        <div className="lg:hidden w-full h-[48px] bg-transparent px-4 border-b border-black flex items-center">
           <Search className="h-[18px] w-[18px] text-gray-600 mr-3 stroke-[1.5]" />
           <input
             type="text"
@@ -447,7 +447,7 @@ export default function NavBar() {
 
         {/* Mobile Menu Dropdown (Slides under the search bar) */}
         <div
-          className={`lg:hidden absolute left-0 top-[140px] w-full bg-white shadow-lg overflow-hidden transition-all duration-300 ease-in-out origin-top border-b ${
+          className={`lg:hidden absolute left-0 top-[140px] w-full bg-metallic-nav shadow-lg overflow-hidden transition-all duration-300 ease-in-out origin-top border-b ${
             isMobileMenuOpen
               ? "max-h-[calc(100vh-140px)] opacity-100 border-black"
               : "max-h-0 opacity-0 border-transparent pointer-events-none"
@@ -457,10 +457,7 @@ export default function NavBar() {
             {/* Mobile SubNav Accordions */}
             <div className="flex flex-col px-6 py-2">
               {Object.entries(subNavData).map(([name, data]) => (
-                <div
-                  key={name}
-                  className="border-b border-gray-100 last:border-0"
-                >
+                <div key={name} className="border-b border-black last:border-0">
                   <button
                     className="flex w-full items-center justify-between py-4 text-[15px] font-medium text-gray-900"
                     onClick={() =>
@@ -478,7 +475,7 @@ export default function NavBar() {
                   <div
                     className={`overflow-hidden transition-all duration-300 ${mobileExpandedSubNav === name ? "max-h-[500px] mb-4" : "max-h-0"}`}
                   >
-                    <div className="flex flex-col pl-4 gap-3 border-l-2 border-[#008a54]">
+                    <div className="flex flex-col pl-4 gap-3 border-l-2 border-black">
                       <Link
                         href="#"
                         className="text-[14px] font-semibold text-gray-900 mt-2"
@@ -501,7 +498,7 @@ export default function NavBar() {
             </div>
 
             {/* Mobile Footer Links */}
-            <div className="bg-gray-50 p-6 flex flex-col gap-5 border-t border-gray-100 pb-12">
+            <div className="bg-transparent p-6 flex flex-col gap-5 border-t border-black pb-12">
               <Link
                 href="#"
                 className="flex items-center gap-3 text-[14px] font-medium text-gray-900"
@@ -520,7 +517,7 @@ export default function NavBar() {
 
         {/* Desktop Sub Nav */}
         <div
-          className={`hidden lg:flex w-full items-center justify-center gap-9 bg-white transition-all duration-500 ease-in-out overflow-hidden ${
+          className={`hidden lg:flex w-full items-center justify-center gap-9 bg-transparent transition-all duration-500 ease-in-out overflow-hidden ${
             isScrolled && !isHovered
               ? "h-0 opacity-0 border-transparent"
               : "h-[52px] border-b border-black opacity-100"
@@ -551,7 +548,7 @@ export default function NavBar() {
 
         {/* Desktop Mega Menu Dropdown */}
         <div
-          className={`hidden lg:block absolute left-0 top-[160px] w-full bg-white shadow-lg overflow-hidden transition-all duration-500 ease-in-out origin-top border-b ${
+          className={`hidden lg:block absolute left-0 top-[160px] w-full bg-metallic-nav shadow-lg overflow-hidden transition-all duration-500 ease-in-out origin-top border-b ${
             openSubNav
               ? "max-h-[1200px] opacity-100 border-black"
               : "max-h-0 opacity-0 border-transparent pointer-events-none"
@@ -601,7 +598,7 @@ export default function NavBar() {
 
             {/* Column 3 */}
             <div className="flex-1 flex flex-col">
-              <div className="w-full flex-1 overflow-hidden bg-gray-100">
+              <div className="w-full flex-1 overflow-hidden bg-transparent">
                 <img
                   src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2000&auto=format&fit=crop"
                   alt="Collection"

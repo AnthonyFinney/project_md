@@ -1,22 +1,22 @@
 "use client";
 
-import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
-import { m, Variants } from 'framer-motion';
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
+import { m, Variants } from "framer-motion";
 
 const campaigns = [
   {
     id: 1,
     subtitle: "GOLF ATTITUDE",
     title: "Elegance Born on the Green",
-    image: "/hero_spring_summer.png" // Note: placeholder image
+    image: "/hero_spring_summer.png", // Note: placeholder image
   },
   {
     id: 2,
     subtitle: "TENNIS ATTITUDE",
     title: "Style Takes the Advantage",
-    image: "/trending_polos.png" // Note: placeholder image
-  }
+    image: "/trending_polos.png", // Note: placeholder image
+  },
 ];
 
 const containerVariants: Variants = {
@@ -45,17 +45,17 @@ const itemVariants: Variants = {
 
 export default function CampaignSection() {
   return (
-    <m.section 
+    <m.section
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.2 }}
       variants={containerVariants}
-      className="w-full bg-white pb-20 overflow-hidden"
+      className="w-full pb-20 overflow-hidden"
     >
       <div className="grid w-full grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
         {campaigns.map((campaign) => (
-          <m.div 
-            key={campaign.id} 
+          <m.div
+            key={campaign.id}
             variants={itemVariants}
             className="group relative aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4] w-full overflow-hidden cursor-pointer"
           >
@@ -75,27 +75,36 @@ export default function CampaignSection() {
                 className="object-cover object-center transition-transform duration-[800ms] ease-out group-hover:scale-105"
               />
             </m.div>
-            
+
             {/* Gradient Overlay for Text Readability */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80" />
-            
+
             {/* Content Area */}
-            <m.div 
+            <m.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
               variants={containerVariants}
               className="absolute bottom-0 left-0 flex flex-col p-8 md:p-10 lg:p-12 lg:pb-16 lg:pl-16"
             >
-              <m.span variants={itemVariants} className="mb-2 text-[10px] font-bold tracking-widest text-white/90">
+              <m.span
+                variants={itemVariants}
+                className="mb-2 text-[10px] font-bold tracking-widest text-white/90"
+              >
                 {campaign.subtitle}
               </m.span>
-              
-              <m.h2 variants={itemVariants} className="mb-8 text-[32px] font-serif leading-[1.1] text-white md:text-[36px] lg:text-[42px] max-w-[320px]">
+
+              <m.h2
+                variants={itemVariants}
+                className="mb-8 text-[32px] font-serif leading-[1.1] text-white md:text-[36px] lg:text-[42px] max-w-[320px]"
+              >
                 {campaign.title}
               </m.h2>
-              
-              <m.button variants={itemVariants} className="flex h-11 w-11 lg:h-12 lg:w-12 items-center justify-center bg-white transition-colors hover:bg-gray-200">
+
+              <m.button
+                variants={itemVariants}
+                className="flex h-11 w-11 lg:h-12 lg:w-12 items-center justify-center bg-white transition-colors hover:bg-gray-200"
+              >
                 <ArrowRight className="h-[18px] w-[18px] stroke-[1.5] text-black" />
               </m.button>
             </m.div>

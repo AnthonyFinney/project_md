@@ -30,16 +30,19 @@ const itemVariants: Variants = {
 
 export default function WeAreLacosteSection() {
   return (
-    <m.section 
+    <m.section
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.2 }}
       variants={containerVariants}
-      className="w-full bg-white py-10 md:py-20 pb-16 md:pb-32 overflow-hidden"
+      className="w-full  py-10 md:py-20 pb-16 md:pb-32 overflow-hidden"
     >
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-12">
         {/* Header Row */}
-        <m.div variants={itemVariants} className="mb-4 md:mb-6 flex w-full items-center md:items-end justify-between">
+        <m.div
+          variants={itemVariants}
+          className="mb-4 md:mb-6 flex w-full items-center md:items-end justify-between"
+        >
           <h2 className="flex items-center gap-3 text-[26px] font-serif tracking-tight text-[#0a2319] md:text-[32px]">
             We are Lacoste
             {/* Desktop Logo (hidden on mobile) */}
@@ -129,21 +132,33 @@ export default function WeAreLacosteSection() {
 
           {/* Right Text Area */}
           <div className="w-full lg:w-[32%] flex flex-col pt-6 md:pt-10 lg:pt-0 md:mr-auto md:ml-10 relative">
-            <m.h3 variants={itemVariants} className="mb-3 md:mb-4 text-[24px] font-serif tracking-tight text-[#0a2319] md:text-[32px]">
+            <m.h3
+              variants={itemVariants}
+              className="mb-3 md:mb-4 text-[24px] font-serif tracking-tight text-[#0a2319] md:text-[32px]"
+            >
               Life is a Beautiful Sport
             </m.h3>
-            <m.p variants={itemVariants} className="mb-8 md:mb-10 text-[15px] leading-[1.6] text-[#333] md:text-[#4a4a4a]">
+            <m.p
+              variants={itemVariants}
+              className="mb-8 md:mb-10 text-[15px] leading-[1.6] text-[#333] md:text-[#4a4a4a]"
+            >
               Lacoste reaffirms what defines its identity: a style born from
               tennis, carried by a free, effortless French elegance in motion. A
               way of approaching sport beyond performance: as an attitude, a
               gesture, a way of playing and of living.
             </m.p>
-            <m.button variants={itemVariants} className="w-fit bg-[#092119] px-6 py-3.5 md:px-8 md:py-[14px] text-[11px] md:text-[12px] font-bold tracking-widest text-white transition-colors hover:bg-black">
+            <m.button
+              variants={itemVariants}
+              className="w-fit bg-[#092119] px-6 py-3.5 md:px-8 md:py-[14px] text-[11px] md:text-[12px] font-bold tracking-widest text-white transition-colors hover:bg-black"
+            >
               SHOP NEW ARRIVALS
             </m.button>
 
             {/* Mobile Pagination (hidden on desktop) */}
-            <m.div variants={itemVariants} className="mt-12 flex w-full items-center justify-end gap-3 text-sm font-semibold text-[#0a2319] md:hidden">
+            <m.div
+              variants={itemVariants}
+              className="mt-12 flex w-full items-center justify-end gap-3 text-sm font-semibold text-[#0a2319] md:hidden"
+            >
               <button className="text-gray-300 hover:text-black transition-colors">
                 <ChevronLeft className="h-[22px] w-[22px] stroke-[1]" />
               </button>
