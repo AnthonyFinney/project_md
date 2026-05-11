@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { m, Variants } from "framer-motion";
+import { m, px, Variants } from "framer-motion";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -43,56 +43,9 @@ export default function WeAreLacosteSection() {
           variants={itemVariants}
           className="mb-4 md:mb-6 flex w-full items-center md:items-end justify-between"
         >
-          <h2 className="flex items-center gap-3 text-[26px] font-serif tracking-tight text-[#0a2319] md:text-[32px]">
-            We are Lacoste
-            {/* Desktop Logo (hidden on mobile) */}
-            <svg
-              width="42"
-              height="20"
-              viewBox="0 0 100 50"
-              fill="currentColor"
-              className="text-[#0a2319] hidden md:block"
-            >
-              <path d="M10 25 C 20 20, 30 20, 40 25 C 50 30, 60 30, 70 25 C 80 20, 90 20, 95 25 C 90 35, 80 40, 70 40 C 60 40, 50 35, 40 30 C 30 25, 20 25, 10 30 Z" />
-              <circle cx="20" cy="23" r="2" fill="white" />
-              <path
-                d="M85 25 C 90 23, 95 23, 98 25"
-                stroke="currentColor"
-                strokeWidth="2"
-                fill="none"
-              />
-              <path
-                d="M15 35 C 25 38, 35 38, 45 35"
-                stroke="currentColor"
-                strokeWidth="2"
-                fill="none"
-              />
-            </svg>
+          <h2 className="flex flex-wrap items-center gap-3 text-[26px] font-serif tracking-tight text-[#0a2319] md:text-[32px]">
+            Muhammadi Attar & Beding House
           </h2>
-
-          {/* Mobile Logo (hidden on desktop) */}
-          <svg
-            width="42"
-            height="20"
-            viewBox="0 0 100 50"
-            fill="currentColor"
-            className="text-[#0a2319] block md:hidden"
-          >
-            <path d="M10 25 C 20 20, 30 20, 40 25 C 50 30, 60 30, 70 25 C 80 20, 90 20, 95 25 C 90 35, 80 40, 70 40 C 60 40, 50 35, 40 30 C 30 25, 20 25, 10 30 Z" />
-            <circle cx="20" cy="23" r="2" fill="white" />
-            <path
-              d="M85 25 C 90 23, 95 23, 98 25"
-              stroke="currentColor"
-              strokeWidth="2"
-              fill="none"
-            />
-            <path
-              d="M15 35 C 25 38, 35 38, 45 35"
-              stroke="currentColor"
-              strokeWidth="2"
-              fill="none"
-            />
-          </svg>
 
           {/* Desktop Pagination (hidden on mobile) */}
           <div className="hidden md:flex items-center gap-4 text-sm font-semibold text-[#0a2319]">
@@ -119,7 +72,7 @@ export default function WeAreLacosteSection() {
                 className="absolute inset-0"
               >
                 <Image
-                  src="/hero_spring_summer.png" // placeholder
+                  src="/WeAreLacosteSection.jpg" // placeholder
                   alt="Man playing tennis"
                   fill
                   sizes="(max-width: 1024px) 100vw, 60vw"
@@ -136,7 +89,7 @@ export default function WeAreLacosteSection() {
               variants={itemVariants}
               className="mb-3 md:mb-4 text-[24px] font-serif tracking-tight text-[#0a2319] md:text-[32px]"
             >
-              Life is a Beautiful Sport
+              Symbol Of Quality We Make Your Life Full Of Style
             </m.h3>
             <m.p
               variants={itemVariants}

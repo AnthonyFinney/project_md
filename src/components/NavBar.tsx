@@ -20,84 +20,111 @@ import {
 
 const subNavData: Record<
   string,
-  { title: string; sidebarLinks: string[]; links: string[]; imgText: string }
+  { title: string; sidebarLinks: string[]; links: string[]; imgText: string; imgSrc: string }
 > = {
   "New In": {
-    title: "See All Men's New Arrivals",
+    title: "See All New Arrivals",
     sidebarLinks: [
       "Discover The Collection",
-      "Spring-Summer",
-      "Essentials",
+      "Seasonal Signatures",
+      "Master Perfumer Blends",
       "Online Exclusives",
     ],
-    links: ["Clothing", "Shoes", "Leather Goods", "Accessories"],
-    imgText: "New Spring-Summer Collection",
+    links: ["New Perfumes", "New Attars", "New Oud Wood", "Discovery Sets"],
+    imgText: "New Seasonal Fragrances",
+    imgSrc: "/images/subNav/Bottle_in_rainforest_area_202605111301.jpeg",
   },
-  Polos: {
-    title: "See All Polos",
+  Perfumes: {
+    title: "See All Perfumes",
     sidebarLinks: [
-      "Polo Fit Guide",
-      "Lacoste L.12.12",
-      "Paris Polo",
-      "Active Polo",
+      "Fragrance Notes Guide",
+      "Eau de Parfum",
+      "Extrait de Parfum",
+      "Niche Collection",
     ],
-    links: ["Classic Fit", "Slim Fit", "Regular Fit", "Long Sleeve"],
-    imgText: "The Polo Collection",
+    links: [
+      "Woody & Spicy",
+      "Floral & Fruity",
+      "Fresh & Aquatic",
+      "Oriental & Amber",
+    ],
+    imgText: "The Signature Perfume Collection",
+    imgSrc: "/images/subNav/Perfume_bottle_on_dark_leather_202605111300.jpeg",
   },
-  Clothing: {
-    title: "See All Clothing",
+  Attars: {
+    title: "See All Attars",
     sidebarLinks: [
-      "T-Shirt Fit Guide",
-      "Trouser Fit Guide",
-      "Tracksuits",
-      "Swimwear",
+      "Attar Application Guide",
+      "Premium Concentrates",
+      "Alcohol-Free Blends",
+      "Heritage Collection",
     ],
-    links: ["T-Shirts", "Sweatshirts", "Jackets & Coats", "Trousers & Shorts"],
-    imgText: "Men's Clothing Essentials",
+    links: ["Rose (Gulab)", "Pure Sandalwood", "White Musk", "Majmua & Blends"],
+    imgText: "Pure Concentrated Perfume Oils",
+    imgSrc: "/images/subNav/Oil_and_Oud_swirling_vessel_202605111259.jpeg",
   },
-  Shoes: {
-    title: "See All Shoes",
+  "Oud & Bakhoor": {
+    title: "See All Oud & Incense",
     sidebarLinks: [
-      "Shoe Size Guide",
-      "L003 Neo",
-      "L-Spin Deluxe",
-      "Carnaby Evo",
+      "The Origins of Oud",
+      "Aged Dehn al Oudh",
+      "Bakhoor Rituals",
+      "Premium Wood Chips",
     ],
-    links: ["Sneakers", "Sliders", "Loafers", "Socks"],
-    imgText: "Footwear Collection",
+    links: ["Oud Oils", "Oud Wood (Muattar)", "Bakhoor Tablets", "Oud Sprays"],
+    imgText: "Exotic Oud & Bakhoor",
+    imgSrc: "/images/subNav/Make_same_image_different_angle_202605111301.jpeg",
   },
-  "Bags & Leather Goods": {
-    title: "See All Leather Goods",
+  "Home Fragrance": {
+    title: "See All Home Fragrances",
     sidebarLinks: [
-      "The Chantaco Collection",
-      "The Croco Crew",
-      "Travel Bags",
-      "Small Leather Goods",
+      "Scenting Your Home",
+      "Luxury Candle Collection",
+      "Reed Diffuser Guide",
+      "Aromatherapy Essentials",
     ],
-    links: ["Backpacks", "Crossbody Bags", "Wallets", "Belts"],
-    imgText: "Premium Leather Goods",
+    links: [
+      "Luxury Candles",
+      "Reed Diffusers",
+      "Room & Linen Sprays",
+      "Essential Oils",
+    ],
+    imgText: "Premium Home Ambiance",
+    imgSrc: "/images/subNav/Perfume_bottle_with_jasmine_flowers_202605111300.jpeg",
   },
   Accessories: {
     title: "See All Accessories",
     sidebarLinks: [
-      "Gift Ideas",
-      "Gift Cards",
-      "Sunglasses Guide",
-      "Watch Guide",
+      "Mabkhara (Burner) Guide",
+      "Charcoal & Preparation",
+      "Bottle Engraving",
+      "Travel Essentials",
     ],
-    links: ["Caps & Hats", "Watches", "Sunglasses", "Fragrances"],
-    imgText: "Signature Accessories",
+    links: [
+      "Incense Burners",
+      "Empty Crystal Bottles",
+      "Charcoal & Tongs",
+      "Travel Atomizers",
+    ],
+    imgText: "Fragrance Ritual Accessories",
+    imgSrc: "/images/subNav/Chrysanthemum_and_Jasmine_petals…_202605111300.jpeg",
   },
-  Sport: {
-    title: "See All Sport",
+  "Gifts & Sets": {
+    title: "See All Gifts",
     sidebarLinks: [
-      "Novak Djokovic Collection",
-      "Daniil Medvedev",
-      "Olympic Heritage",
-      "Golf Collection",
+      "Gifting Guide",
+      "Corporate Gifts",
+      "Bridal Collections",
+      "E-Gift Cards",
     ],
-    links: ["Tennis", "Golf", "Activewear", "Sport Accessories"],
-    imgText: "Lacoste Sport",
+    links: [
+      "Perfume Gift Sets",
+      "Oud & Burner Sets",
+      "Discovery Sample Kits",
+      "Bespoke Gifting",
+    ],
+    imgText: "Curated Fragrance Gifts",
+    imgSrc: "/images/subNav/gemini-3-pro-image-preview-2k_a_Use_the_uploaded_IRI (1).png",
   },
 };
 
@@ -198,7 +225,7 @@ export default function NavBar() {
 
       <nav
         ref={navRef}
-        className="fixed top-0 left-0 z-50 flex w-full flex-col shadow-sm bg-metallic-nav"
+        className="fixed top-0 left-0 z-50 flex w-full flex-col shadow-sm bg-white"
         style={{ overflowAnchor: "none" }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -599,11 +626,13 @@ export default function NavBar() {
             {/* Column 3 */}
             <div className="flex-1 flex flex-col">
               <div className="w-full flex-1 overflow-hidden bg-transparent">
-                <img
-                  src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2000&auto=format&fit=crop"
-                  alt="Collection"
-                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
-                />
+                {openSubNav && subNavData[openSubNav]?.imgSrc && (
+                  <img
+                    src={subNavData[openSubNav].imgSrc}
+                    alt={openSubNav}
+                    className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+                  />
+                )}
               </div>
               <div className="h-[70px] flex items-center justify-start ml-10">
                 <p className="text-[14px] text-[#004751]">

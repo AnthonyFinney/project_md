@@ -1,0 +1,926 @@
+[
+  {
+    "_id": {
+      "$oid": "87784f49c367f45b00e856c7"
+    },
+    "name": "Mystic Rose",
+    "category": {
+      "name": "Woody",
+      "description": "Earthy, grounding aromas rooted in nature's timber.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Eau de Parfum",
+    "description": "Discover the enchantment of Mystic Rose. This captivating fragrance opens with top notes of lavender, seamlessly blending into a heart of jasmine, and finally settling into a rich, long-lasting base of jasmine.",
+    "image": "/images/products/Gemini_Generated_Image_12bfut12bfut12bf.png",
+    "isFeatured": true,
+    "notes": {
+      "top": ["lavender"],
+      "middle": ["jasmine"],
+      "base": ["jasmine"]
+    },
+    "scentFamily": "Woody",
+    "tags": ["lavender", "jasmine", "woody"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 188000,
+        "stock": 78
+      },
+      {
+        "size": "6ml",
+        "price": 399000,
+        "stock": 20
+      },
+      {
+        "size": "12ml",
+        "price": 661000,
+        "stock": 73
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "06b9871393ad03a70c235238"
+    },
+    "name": "Oud Musk",
+    "category": {
+      "name": "Oriental",
+      "description": "Warm, spicy, and exotic fragrances with a rich history.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Eau de Parfum",
+    "description": "Experience the allure of Oud Musk, a masterful composition starting with fresh jasmine. The journey continues through a mesmerizing core of lavender, resting on a solid foundation of oud.",
+    "image": "/images/products/Gemini_Generated_Image_19bsul19bsul19bs.png",
+    "isFeatured": false,
+    "notes": {
+      "top": ["jasmine"],
+      "middle": ["lavender"],
+      "base": ["oud"]
+    },
+    "scentFamily": "Oriental",
+    "tags": ["jasmine", "lavender", "oud", "oriental"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 190000,
+        "stock": 52
+      },
+      {
+        "size": "6ml",
+        "price": 392000,
+        "stock": 10
+      },
+      {
+        "size": "12ml",
+        "price": 700000,
+        "stock": 53
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "5bcfcf07b3c2ad2e89e3b8d7"
+    },
+    "name": "Desert Blossom",
+    "category": {
+      "name": "Green",
+      "description": "Fresh, dewy and verdant notes reminiscent of lush greenery.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Eau de Parfum",
+    "description": "Desert Blossom is an exquisite symphony of scents. It introduces itself with vibrant amber, transitions elegantly into vanilla, and leaves a memorable trail of sandalwood.",
+    "image": "/images/products/Gemini_Generated_Image_1jkenx1jkenx1jke.png",
+    "isFeatured": false,
+    "notes": {
+      "top": ["amber"],
+      "middle": ["vanilla"],
+      "base": ["sandalwood"]
+    },
+    "scentFamily": "Green",
+    "tags": ["amber", "vanilla", "sandalwood", "green"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 177000,
+        "stock": 50
+      },
+      {
+        "size": "6ml",
+        "price": 390000,
+        "stock": 66
+      },
+      {
+        "size": "12ml",
+        "price": 779000,
+        "stock": 25
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "f288310940a9f972936d507f"
+    },
+    "name": "Imperial Musk",
+    "category": {
+      "name": "Green",
+      "description": "Fresh, dewy and verdant notes reminiscent of lush greenery.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Eau de Parfum",
+    "description": "Indulge in Imperial Musk. The initial burst of rose awakens the senses, while the delicate sandalwood provides depth. The experience concludes with a comforting embrace of rose.",
+    "image": "/images/products/Gemini_Generated_Image_3o46er3o46er3o46.png",
+    "isFeatured": false,
+    "notes": {
+      "top": ["rose"],
+      "middle": ["sandalwood"],
+      "base": ["rose"]
+    },
+    "scentFamily": "Green",
+    "tags": ["rose", "sandalwood", "green"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 175000,
+        "stock": 46
+      },
+      {
+        "size": "6ml",
+        "price": 300000,
+        "stock": 90
+      },
+      {
+        "size": "12ml",
+        "price": 736000,
+        "stock": 36
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "262669cbf05fabc858ccd690"
+    },
+    "name": "Velvet Blossom",
+    "category": {
+      "name": "Citrus",
+      "description": "Zesty, bright, and invigorating notes.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Perfume Oil",
+    "description": "Unveil the mystery of Velvet Blossom. A delicate whisper of vetiver paves the way for a robust heart of oud, culminating in the warm, grounding essence of bergamot.",
+    "image": "/images/products/Gemini_Generated_Image_3o4kqz3o4kqz3o4k.png",
+    "isFeatured": false,
+    "notes": {
+      "top": ["vetiver"],
+      "middle": ["oud"],
+      "base": ["bergamot"]
+    },
+    "scentFamily": "Citrus",
+    "tags": ["vetiver", "oud", "bergamot", "citrus"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 177500,
+        "stock": 97
+      },
+      {
+        "size": "6ml",
+        "price": 372000,
+        "stock": 27
+      },
+      {
+        "size": "12ml",
+        "price": 631000,
+        "stock": 26
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "c6785e99a0278f630919ca00"
+    },
+    "name": "Secret Oud",
+    "category": {
+      "name": "Floral",
+      "description": "Romantic and captivating scents derived from blooms.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Eau de Parfum",
+    "description": "Step into elegance with Secret Oud. Featuring an uplifting opening of patchouli, it gracefully evolves into a bouquet of jasmine, anchored by the timeless appeal of bergamot.",
+    "image": "/images/products/Gemini_Generated_Image_3tf6bh3tf6bh3tf6.png",
+    "isFeatured": false,
+    "notes": {
+      "top": ["patchouli"],
+      "middle": ["jasmine"],
+      "base": ["bergamot"]
+    },
+    "scentFamily": "Floral",
+    "tags": ["patchouli", "jasmine", "bergamot", "floral"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 192000,
+        "stock": 98
+      },
+      {
+        "size": "6ml",
+        "price": 329000,
+        "stock": 19
+      },
+      {
+        "size": "12ml",
+        "price": 719000,
+        "stock": 95
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "1dc289d3634e91a32fee16a6"
+    },
+    "name": "Midnight Oud",
+    "category": {
+      "name": "Green",
+      "description": "Fresh, dewy and verdant notes reminiscent of lush greenery.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Eau de Parfum",
+    "description": "Let Midnight Oud transport you. The journey begins with bergamot, followed by a captivating twist of musk, and a lingering finish of vetiver that stays with you.",
+    "image": "/images/products/Gemini_Generated_Image_4givrz4givrz4giv.png",
+    "isFeatured": false,
+    "notes": {
+      "top": ["bergamot"],
+      "middle": ["musk"],
+      "base": ["vetiver"]
+    },
+    "scentFamily": "Green",
+    "tags": ["bergamot", "musk", "vetiver", "green"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 178000,
+        "stock": 45
+      },
+      {
+        "size": "6ml",
+        "price": 315000,
+        "stock": 99
+      },
+      {
+        "size": "12ml",
+        "price": 713000,
+        "stock": 31
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "78bf691eea9b5f372ac29544"
+    },
+    "name": "Golden Rose",
+    "category": {
+      "name": "Green",
+      "description": "Fresh, dewy and verdant notes reminiscent of lush greenery.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Eau de Parfum",
+    "description": "A modern classic, Golden Rose perfectly balances musk at the top, vanilla in the middle, and vetiver at its base. A truly unique signature scent.",
+    "image": "/images/products/Gemini_Generated_Image_4wyubt4wyubt4wyu.png",
+    "isFeatured": false,
+    "notes": {
+      "top": ["musk"],
+      "middle": ["vanilla"],
+      "base": ["vetiver"]
+    },
+    "scentFamily": "Green",
+    "tags": ["musk", "vanilla", "vetiver", "green"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 174000,
+        "stock": 21
+      },
+      {
+        "size": "6ml",
+        "price": 318000,
+        "stock": 76
+      },
+      {
+        "size": "12ml",
+        "price": 608000,
+        "stock": 91
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "70db3dfb3f96ad3d5da0d39d"
+    },
+    "name": "Imperial Elixir",
+    "category": {
+      "name": "Woody",
+      "description": "Earthy, grounding aromas rooted in nature's timber.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Eau de Parfum",
+    "description": "Embrace the sophisticated aura of Imperial Elixir. The striking musk notes invite you in, while the rose heart enchants. Finally, rose provides a luxurious dry down.",
+    "image": "/images/products/Gemini_Generated_Image_6eh0b06eh0b06eh0.png",
+    "isFeatured": true,
+    "notes": {
+      "top": ["musk"],
+      "middle": ["rose"],
+      "base": ["rose"]
+    },
+    "scentFamily": "Woody",
+    "tags": ["musk", "rose", "woody"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 197000,
+        "stock": 42
+      },
+      {
+        "size": "6ml",
+        "price": 360000,
+        "stock": 55
+      },
+      {
+        "size": "12ml",
+        "price": 708000,
+        "stock": 47
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "a1da3bfdcaae800bb41626b1"
+    },
+    "name": "Desert Musk",
+    "category": {
+      "name": "Green",
+      "description": "Fresh, dewy and verdant notes reminiscent of lush greenery.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Eau de Parfum",
+    "description": "With Desert Musk, every moment is special. The bright sandalwood gives way to an alluring oud, ending on a profoundly rich note of amber.",
+    "image": "/images/products/Gemini_Generated_Image_bbydrkbbydrkbbyd.png",
+    "isFeatured": true,
+    "notes": {
+      "top": ["sandalwood"],
+      "middle": ["oud"],
+      "base": ["amber"]
+    },
+    "scentFamily": "Green",
+    "tags": ["sandalwood", "oud", "amber", "green"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 152000,
+        "stock": 54
+      },
+      {
+        "size": "6ml",
+        "price": 318500,
+        "stock": 48
+      },
+      {
+        "size": "12ml",
+        "price": 659000,
+        "stock": 92
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "929be3f28a88879a87067575"
+    },
+    "name": "Secret Musk",
+    "category": {
+      "name": "Green",
+      "description": "Fresh, dewy and verdant notes reminiscent of lush greenery.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Eau de Parfum",
+    "description": "Elevate your daily routine with Secret Musk. A crisp opening of lavender blends with a floral/spicy heart of bergamot, grounded by a magnetic base of sandalwood.",
+    "image": "/images/products/Gemini_Generated_Image_cffat1cffat1cffa.jpg",
+    "isFeatured": false,
+    "notes": {
+      "top": ["lavender"],
+      "middle": ["bergamot"],
+      "base": ["sandalwood"]
+    },
+    "scentFamily": "Green",
+    "tags": ["lavender", "bergamot", "sandalwood", "green"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 165000,
+        "stock": 71
+      },
+      {
+        "size": "6ml",
+        "price": 381000,
+        "stock": 58
+      },
+      {
+        "size": "12ml",
+        "price": 682000,
+        "stock": 80
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "5c859a0461fe67f4a17a8cde"
+    },
+    "name": "Midnight Breeze",
+    "category": {
+      "name": "Oriental",
+      "description": "Warm, spicy, and exotic fragrances with a rich history.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Perfume Oil",
+    "description": "Immerse yourself in Midnight Breeze. It starts with a lively introduction of vanilla, blooms into a vibrant vetiver, and fades into a soft, inviting amber.",
+    "image": "/images/products/Gemini_Generated_Image_f05hnf05hnf05hnf.png",
+    "isFeatured": false,
+    "notes": {
+      "top": ["vanilla"],
+      "middle": ["vetiver"],
+      "base": ["amber"]
+    },
+    "scentFamily": "Oriental",
+    "tags": ["vanilla", "vetiver", "amber", "oriental"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 198000,
+        "stock": 77
+      },
+      {
+        "size": "6ml",
+        "price": 308000,
+        "stock": 69
+      },
+      {
+        "size": "12ml",
+        "price": 733000,
+        "stock": 61
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "b9a6e62563e903805738539a"
+    },
+    "name": "Velvet Rose",
+    "category": {
+      "name": "Green",
+      "description": "Fresh, dewy and verdant notes reminiscent of lush greenery.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Perfume Oil",
+    "description": "The essence of charm, Velvet Rose captures attention with musk, keeps it with patchouli, and leaves a lasting impression with sandalwood.",
+    "image": "/images/products/Gemini_Generated_Image_ftab4fjhtab4ftab4f (1).png",
+    "isFeatured": false,
+    "notes": {
+      "top": ["musk"],
+      "middle": ["patchouli"],
+      "base": ["sandalwood"]
+    },
+    "scentFamily": "Green",
+    "tags": ["musk", "patchouli", "sandalwood", "green"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 183000,
+        "stock": 44
+      },
+      {
+        "size": "6ml",
+        "price": 308500,
+        "stock": 28
+      },
+      {
+        "size": "12ml",
+        "price": 690000,
+        "stock": 74
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "db95874fa40f650b9b120d3d"
+    },
+    "name": "Imperial Breeze",
+    "category": {
+      "name": "Oriental",
+      "description": "Warm, spicy, and exotic fragrances with a rich history.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Perfume Oil",
+    "description": "Refresh your senses with Imperial Breeze. The lively vetiver notes dance above a serene heart of amber, supported by the earthy richness of vetiver.",
+    "image": "/images/products/Gemini_Generated_Image_ftab4ftab4ftab4f (1).png",
+    "isFeatured": false,
+    "notes": {
+      "top": ["vetiver"],
+      "middle": ["amber"],
+      "base": ["vetiver"]
+    },
+    "scentFamily": "Oriental",
+    "tags": ["vetiver", "amber", "oriental"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 192500,
+        "stock": 89
+      },
+      {
+        "size": "6ml",
+        "price": 344000,
+        "stock": 49
+      },
+      {
+        "size": "12ml",
+        "price": 755000,
+        "stock": 41
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "dffb7b7f7791cc8cc32ce1c2"
+    },
+    "name": "Oud Elixir",
+    "category": {
+      "name": "Oriental",
+      "description": "Warm, spicy, and exotic fragrances with a rich history.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Eau de Parfum",
+    "description": "A bold statement: Oud Elixir. Intoxicating vetiver draws you in, giving way to a heart of musk, and resting on a powerful base of oud.",
+    "image": "/images/products/Gemini_Generated_Image_ftab4ftab4ftab4f.png",
+    "isFeatured": false,
+    "notes": {
+      "top": ["vetiver"],
+      "middle": ["musk"],
+      "base": ["oud"]
+    },
+    "scentFamily": "Oriental",
+    "tags": ["vetiver", "musk", "oud", "oriental"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 189000,
+        "stock": 93
+      },
+      {
+        "size": "6ml",
+        "price": 354000,
+        "stock": 51
+      },
+      {
+        "size": "12ml",
+        "price": 762000,
+        "stock": 109
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "b78694ea274ed1877dcc3010"
+    },
+    "name": "Secret Nectar",
+    "category": {
+      "name": "Woody",
+      "description": "Earthy, grounding aromas rooted in nature's timber.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Perfume Oil",
+    "description": "Discover the hidden depths of Secret Nectar. It reveals itself through a curtain of musk, showcasing a heart of rose, before settling into comforting musk.",
+    "image": "/images/products/Gemini_Generated_Image_ftdmkftdmkftdmkf.png",
+    "isFeatured": false,
+    "notes": {
+      "top": ["musk"],
+      "middle": ["rose"],
+      "base": ["musk"]
+    },
+    "scentFamily": "Woody",
+    "tags": ["musk", "rose", "woody"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 180000,
+        "stock": 100
+      },
+      {
+        "size": "6ml",
+        "price": 350000,
+        "stock": 88
+      },
+      {
+        "size": "12ml",
+        "price": 631500,
+        "stock": 101
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6ea1f18b0d085ffcccc6cfee"
+    },
+    "name": "Velvet Nectar",
+    "category": {
+      "name": "Green",
+      "description": "Fresh, dewy and verdant notes reminiscent of lush greenery.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Perfume Oil",
+    "description": "Velvet Nectar redefines luxury. An opulent top note of patchouli meets a lush vanilla, finishing gracefully with a touch of oud.",
+    "image": "/images/products/Gemini_Generated_Image_g5dh1ng5dh1ng5dh.png",
+    "isFeatured": false,
+    "notes": {
+      "top": ["patchouli"],
+      "middle": ["vanilla"],
+      "base": ["oud"]
+    },
+    "scentFamily": "Green",
+    "tags": ["patchouli", "vanilla", "oud", "green"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 150000,
+        "stock": 29
+      },
+      {
+        "size": "6ml",
+        "price": 338000,
+        "stock": 108
+      },
+      {
+        "size": "12ml",
+        "price": 711000,
+        "stock": 75
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "ee306c6f44070f2e068f2399"
+    },
+    "name": "Oud Elixir",
+    "category": {
+      "name": "Oriental",
+      "description": "Warm, spicy, and exotic fragrances with a rich history.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Eau de Parfum",
+    "description": "Escape reality with Oud Elixir. The dreamy lavender notes lead to an exotic amber, anchored firmly by a soothing bergamot.",
+    "image": "/images/products/Gemini_Generated_Image_i6a0bci6a0bci6a0.png",
+    "isFeatured": false,
+    "notes": {
+      "top": ["lavender"],
+      "middle": ["amber"],
+      "base": ["bergamot"]
+    },
+    "scentFamily": "Oriental",
+    "tags": ["lavender", "amber", "bergamot", "oriental"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 186000,
+        "stock": 79
+      },
+      {
+        "size": "6ml",
+        "price": 303000,
+        "stock": 72
+      },
+      {
+        "size": "12ml",
+        "price": 781000,
+        "stock": 94
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "1b6e187c13b2462542b9e377"
+    },
+    "name": "Midnight Elixir",
+    "category": {
+      "name": "Woody",
+      "description": "Earthy, grounding aromas rooted in nature's timber.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Perfume Oil",
+    "description": "Radiate confidence with Midnight Elixir. A sharp, enticing lavender opens the stage for rose, followed by a classic musk dry down.",
+    "image": "/images/products/Gemini_Generated_Image_j78ge5j78ge5j78g.png",
+    "isFeatured": false,
+    "notes": {
+      "top": ["lavender"],
+      "middle": ["rose"],
+      "base": ["musk"]
+    },
+    "scentFamily": "Woody",
+    "tags": ["lavender", "rose", "musk", "woody"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 193000,
+        "stock": 65
+      },
+      {
+        "size": "6ml",
+        "price": 376000,
+        "stock": 67
+      },
+      {
+        "size": "12ml",
+        "price": 676000,
+        "stock": 22
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "f1d1822953b9de679852e275"
+    },
+    "name": "Oud Musk",
+    "category": {
+      "name": "Green",
+      "description": "Fresh, dewy and verdant notes reminiscent of lush greenery.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Eau de Parfum",
+    "description": "The perfect balance of nature, Oud Musk fuses musk with patchouli, all resting securely on a bed of lavender.",
+    "image": "/images/products/Gemini_Generated_Image_ju3khsju3khsju3k.png",
+    "isFeatured": false,
+    "notes": {
+      "top": ["musk"],
+      "middle": ["patchouli"],
+      "base": ["lavender"]
+    },
+    "scentFamily": "Green",
+    "tags": ["musk", "patchouli", "lavender", "green"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 198500,
+        "stock": 56
+      },
+      {
+        "size": "6ml",
+        "price": 300500,
+        "stock": 62
+      },
+      {
+        "size": "12ml",
+        "price": 675000,
+        "stock": 57
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "3b9ffc7f85826440ac2dfcd5"
+    },
+    "name": "Royal Rose",
+    "category": {
+      "name": "Green",
+      "description": "Fresh, dewy and verdant notes reminiscent of lush greenery.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Eau de Parfum",
+    "description": "Awaken your spirit with Royal Rose. The energetic vanilla gives way to a complex oud, finishing on a beautifully rounded vanilla.",
+    "image": "/images/products/Gemini_Generated_Image_jziodhjziodhjzio.png",
+    "isFeatured": false,
+    "notes": {
+      "top": ["vanilla"],
+      "middle": ["oud"],
+      "base": ["vanilla"]
+    },
+    "scentFamily": "Green",
+    "tags": ["vanilla", "oud", "green"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 165500,
+        "stock": 59
+      },
+      {
+        "size": "6ml",
+        "price": 363000,
+        "stock": 60
+      },
+      {
+        "size": "12ml",
+        "price": 732000,
+        "stock": 83
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "02991f9e356a6f11f9ae8d3c"
+    },
+    "name": "Midnight Nectar",
+    "category": {
+      "name": "Citrus",
+      "description": "Zesty, bright, and invigorating notes.",
+      "promotion": {
+        "type": [],
+        "details": ""
+      }
+    },
+    "concentration": "Perfume Oil",
+    "description": "Let Midnight Nectar be your signature. An opening of rose transitions into vetiver, and ends with the distinctive, lingering aroma of jasmine.",
+    "image": "/images/products/Gemini_Generated_Image_kz1z4okz1z4okz1z.png",
+    "isFeatured": false,
+    "notes": {
+      "top": ["rose"],
+      "middle": ["vetiver"],
+      "base": ["jasmine"]
+    },
+    "scentFamily": "Citrus",
+    "tags": ["rose", "vetiver", "jasmine", "citrus"],
+    "variants": [
+      {
+        "size": "3ml",
+        "price": 197500,
+        "stock": 23
+      },
+      {
+        "size": "6ml",
+        "price": 313000,
+        "stock": 24
+      },
+      {
+        "size": "12ml",
+        "price": 626000,
+        "stock": 63
+      }
+    ]
+  }
+]

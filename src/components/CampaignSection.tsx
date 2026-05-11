@@ -7,15 +7,15 @@ import { m, Variants } from "framer-motion";
 const campaigns = [
   {
     id: 1,
-    subtitle: "GOLF ATTITUDE",
-    title: "Elegance Born on the Green",
-    image: "/hero_spring_summer.png", // Note: placeholder image
+    subtitle: "Muhammadi Creation",
+    title: "Unique blend",
+    image: "/images/products/Gemini_Generated_Image_cffat1cffat1cffa.jpg", // Note: placeholder image
   },
   {
     id: 2,
-    subtitle: "TENNIS ATTITUDE",
-    title: "Style Takes the Advantage",
-    image: "/trending_polos.png", // Note: placeholder image
+    subtitle: "Perfume Oil",
+    title: "Perfume oil & Natural oil",
+    image: "/images/products/Gemini_Generated_Image_kz1z4okz1z4okz1z.png", // Note: placeholder image
   },
 ];
 

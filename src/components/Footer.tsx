@@ -37,50 +37,6 @@ const itemVariants: Variants = {
 export default function Footer() {
   return (
     <footer className="w-full bg-[#0a2319] text-white overflow-hidden">
-      {/* Top Banner: App Download */}
-      <m.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.2 }}
-        variants={containerVariants}
-        className="mx-auto w-full max-w-[1440px] px-5 sm:px-6 lg:px-12"
-      >
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between py-10 lg:py-12 border-b border-white/10 gap-6 md:gap-0">
-          <m.div variants={itemVariants} className="flex items-center gap-6">
-            {/* Hidden on mobile, makes no sense to scan a QR code on the device you're holding */}
-            <div className="hidden sm:flex h-20 w-20 shrink-0 items-center justify-center bg-white p-1">
-              <div className="flex h-full w-full items-center justify-center border border-black">
-                <span className="text-[8px] font-bold text-black text-center">
-                  QR
-                  <br />
-                  CODE
-                </span>
-              </div>
-            </div>
-            <div>
-              <h3 className="mb-2 text-xl lg:text-2xl font-serif leading-tight">
-                Discover the new Lacoste app
-              </h3>
-              <p className="text-[13px] lg:text-sm text-gray-300">
-                Enjoy 15% off your first full-price purchase in the app with
-                code APP15
-              </p>
-            </div>
-          </m.div>
-          <m.div
-            variants={itemVariants}
-            className="flex w-full md:w-auto gap-3 sm:gap-4 mt-2 md:mt-0"
-          >
-            <div className="flex flex-1 md:flex-none h-12 md:h-10 md:w-[140px] cursor-pointer items-center justify-center rounded-md border border-white/30 bg-black text-[11px] md:text-xs font-semibold text-center leading-tight hover:bg-gray-900 transition-colors">
-              Download on the <br /> App Store
-            </div>
-            <div className="flex flex-1 md:flex-none h-12 md:h-10 md:w-[140px] cursor-pointer items-center justify-center rounded-md border border-white/30 bg-black text-[11px] md:text-xs font-semibold text-center leading-tight hover:bg-gray-900 transition-colors">
-              GET IT ON <br /> Google Play
-            </div>
-          </m.div>
-        </div>
-      </m.div>
-
       {/* Services Row */}
       <div className="border-b border-white/10">
         <m.div
@@ -145,9 +101,9 @@ export default function Footer() {
           >
             <div className="mb-8 lg:mb-10 flex items-center gap-4">
               <div className="flex h-[60px] w-[60px] lg:h-[72px] lg:w-[72px] shrink-0 items-center justify-center rounded-full border border-white text-center font-serif text-[9px] lg:text-[10px] leading-tight">
-                LE CLUB
+                MU CLUB
                 <br />
-                LACOSTE
+                MUHAMMADI
               </div>
               <p className="text-[13px] leading-relaxed">
                 Want exclusive offers & first access to products? Sign up.
@@ -182,19 +138,19 @@ export default function Footer() {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 lg:gap-8">
               <div className="flex flex-col gap-3">
                 <h4 className="mb-1 md:mb-2 text-[15px] font-semibold">
-                  About Lacoste
+                  About Muhammadi
                 </h4>
                 <Link
                   href="#"
                   className="text-[13px] text-gray-300 hover:text-white"
                 >
-                  Le Club Lacoste
+                  Le Club Muhammadi
                 </Link>
                 <Link
                   href="#"
                   className="text-[13px] text-gray-300 hover:text-white"
                 >
-                  The Lacoste Group
+                  The Muhammadi Group
                 </Link>
                 <Link
                   href="#"
@@ -266,7 +222,7 @@ export default function Footer() {
                   href="#"
                   className="text-[13px] text-gray-300 hover:text-white"
                 >
-                  Lacoste Sport
+                  Muhammadi Sport
                 </Link>
               </div>
 
@@ -382,24 +338,26 @@ export default function Footer() {
         </m.div>
       </div>
 
-      {/* Giant LACOSTE Text */}
+      {/* Giant MUHAMMADI Text */}
       <m.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.5 }}
         variants={containerVariants}
-        className="flex w-full justify-center overflow-hidden bg-[#0a2319] py-6 lg:py-8"
+        className="flex w-full overflow-hidden bg-[#0a2319] py-6 lg:py-8"
       >
         <m.h1
           variants={itemVariants}
-          className="select-none font-serif text-[24vw] leading-[0.75] tracking-tighter text-[#fcf4e6]"
+          className="flex w-full justify-between select-none font-serif text-[11vw] leading-[0.75] text-[#ffffff]"
         >
-          LACOSTE
+          {"MUHAMMADI".split("").map((letter, i) => (
+            <span key={i}>{letter}</span>
+          ))}
         </m.h1>
       </m.div>
 
       {/* Bottom Legal Bar */}
-      <div className="w-full bg-[#fcf4e6] py-6">
+      <div className="w-full bg-white py-6">
         <m.div
           initial="hidden"
           whileInView="visible"
@@ -432,14 +390,13 @@ export default function Footer() {
             className="flex cursor-pointer items-center gap-2 hover:text-black"
           >
             <div className="flex h-[14px] w-[20px] items-center justify-center overflow-hidden rounded-[2px] border border-gray-200">
-              {/* Fake US Flag */}
-              <div className="h-full w-full bg-stripes-us relative">
-                <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-blue-800" />
-                <div className="w-full h-full bg-[repeating-linear-gradient(transparent,transparent_20%,#b22234_20%,#b22234_40%)]" />
+              {/* Fake Bangladesh Flag */}
+              <div className="h-full w-full bg-[#006a4e] relative flex items-center justify-center">
+                <div className="h-[8px] w-[8px] rounded-full bg-[#f42a41] absolute left-[4px]" />
               </div>
             </div>
             <span className="text-black transition-colors hover:underline">
-              United States
+              Bangladesh
             </span>
           </m.div>
         </m.div>

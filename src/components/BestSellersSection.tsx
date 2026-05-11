@@ -1,71 +1,11 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronLeft, ChevronRight, Heart, Eye } from "lucide-react";
 import { m, Variants } from "framer-motion";
-
-const products = [
-  {
-    id: 1,
-    name: "Men's Classic Fit L.12.12 LIGHT Piqué Polo",
-    price: "$54.99",
-    originalPrice: "$110.00",
-    discount: "50% OFF",
-    colors: ["bg-[#7a1818]", "bg-[#8aa7c3]", "bg-white", "bg-[#2b2b2b]"],
-    extraColors: "+ 15",
-    tags: "NEW IN | ULTRA LIGHT",
-    image: "/trending_polos.png",
-    isUnderlined: false,
-  },
-  {
-    id: 2,
-    name: "Men's Classic Fit Original L.12.12 Polo",
-    price: "$110.00",
-    originalPrice: null,
-    discount: null,
-    colors: ["bg-[#1a1a1a]", "bg-[#e5d6e2]", "bg-[#f2efe9]", "bg-[#1f283c]"],
-    extraColors: "+ 58",
-    tags: "SELECT COLORS ON SALE",
-    image: "/trending_polos.png",
-    isUnderlined: false,
-  },
-  {
-    id: 3,
-    name: "Men's Classic Fit Original L.12.12 Polo",
-    price: "$65.99",
-    originalPrice: "$110.00",
-    discount: "40% OFF",
-    colors: ["bg-[#849f6b]", "bg-[#a69cc0]", "bg-[#f2efe9]", "bg-[#1a1a1a]"],
-    extraColors: "+ 58",
-    tags: "",
-    image: "/trending_polos.png",
-    isUnderlined: false,
-  },
-  {
-    id: 4,
-    name: "Metropole Bracelet",
-    price: "$125.00",
-    originalPrice: null,
-    discount: null,
-    colors: ["bg-[#c1a76c]", "bg-[#a1824a]"],
-    extraColors: "",
-    tags: "",
-    image: "/hero_spring_summer.png",
-    isUnderlined: true,
-  },
-  {
-    id: 5,
-    name: "Men's Cotton Polo",
-    price: "$35.99",
-    originalPrice: "$60.00",
-    discount: "40% OFF",
-    colors: ["bg-[#a0c5e8]", "bg-[#1a1a1a]", "bg-white"],
-    extraColors: "",
-    tags: "FINAL SALE",
-    image: "/trending_polos.png",
-    isUnderlined: false,
-  },
-];
+import productsData from "../../products.json";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -91,14 +31,62 @@ const itemVariants: Variants = {
   },
 };
 
-export default function BestSellersSection() {
+export interface ProductVariant {
+  size: string;
+  price: number;
+  stock: number;
+}
+
+export interface Product {
+  _id: {
+    $oid: string;
+  };
+  name: string;
+  category: {
+    name: string;
+  };
+  image: string;
+  variants: ProductVariant[];
+}
+
+export interface BestSellersSectionProps {
+  /** Optional array of products to display. Defaults to products from products.json */
+  products?: Product[];
+}
+
+export default function BestSellersSection({
+  products = productsData as Product[],
+}: BestSellersSectionProps) {
+  const [displayProducts, setDisplayProducts] = useState<Product[]>([]);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Shuffle the products on mount so each instance of the component
+    // shows a different random order. We do this in useEffect to avoid
+    // hydration mismatches between server and client renders.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setDisplayProducts(
+      [...products].sort(() => 0.5 - Math.random()).slice(0, 8),
+    );
+  }, [products]);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const scrollAmount = 320; // approximate width of one item
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <m.section
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.2 }}
       variants={containerVariants}
-      className="w-full pt-10 pb-20 overflow-hidden"
+      className="w-full pt-10 pb-20 overflow-hidden "
     >
       <div className="mx-auto w-full max-w-[1440px]">
         {/* Header */}
@@ -110,25 +98,34 @@ export default function BestSellersSection() {
             Shop our Best Sellers
           </h2>
           <div className="flex gap-2">
-            <button className="flex h-[38px] w-[38px] items-center justify-center border border-[#e5e5e5] text-gray-300">
+            <button
+              onClick={() => scroll("left")}
+              className="flex h-[38px] w-[38px] items-center justify-center border border-black text-black hover:bg-gray-50 transition-colors"
+            >
               <ChevronLeft className="h-[18px] w-[18px] stroke-[1.5]" />
             </button>
-            <button className="flex h-[38px] w-[38px] items-center justify-center border border-black text-black hover:bg-gray-50 transition-colors">
+            <button
+              onClick={() => scroll("right")}
+              className="flex h-[38px] w-[38px] items-center justify-center border border-black text-black hover:bg-gray-50 transition-colors"
+            >
               <ChevronRight className="h-[18px] w-[18px] stroke-[1.5]" />
             </button>
           </div>
         </m.div>
 
         {/* Carousel */}
-        <div className="flex w-full overflow-x-auto overflow-y-hidden pb-4 border-y border-[#e5e5e5] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        <div
+          ref={scrollRef}
+          className="flex w-full overflow-x-auto overflow-y-hidden pb-4 border-y border-[#e5e5e5] hide-scrollbar scroll-smooth"
+        >
           {/* Left spacer for alignment with header */}
           <div className="shrink-0 w-6 lg:w-12" />
 
-          {products.map((product, index) => (
+          {displayProducts.map((product, index) => (
             <m.div
-              key={product.id}
+              key={product._id.$oid}
               variants={itemVariants}
-              className={`group relative flex shrink-0 w-[260px] md:w-[300px] lg:w-[310px] flex-col border-r border-[#e5e5e5] hover:shadow-md transition-shadow ${index === 0 ? "border-l" : ""}`}
+              className={`group relative flex shrink-0 w-[260px] md:w-[300px] lg:w-[310px] mx-1 flex-col border-r border-[#e5e5e5] hover:shadow-md transition-shadow ${index === 0 ? "border-l" : ""}`}
             >
               {/* Image Area */}
               <div className="relative aspect-[3/4] w-full bg-[#f4f4f4] cursor-pointer">
@@ -136,21 +133,17 @@ export default function BestSellersSection() {
                   <Heart className="h-[18px] w-[18px] stroke-[1.5]" />
                 </button>
 
-                <div className="relative h-full w-full">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover object-top mix-blend-multiply"
-                  />
-                </div>
-
-                {product.discount && (
-                  <div className="absolute bottom-3 left-3 z-10 bg-[#008a54] px-1.5 py-[2px] text-[10px] font-bold tracking-wider text-white">
-                    {product.discount}
+                <Link href={`/products/${product._id.$oid}`}>
+                  <div className="relative h-full w-full">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover object-top mix-blend-multiply"
+                    />
                   </div>
-                )}
+                </Link>
 
                 <button className="absolute bottom-3 right-3 z-10 flex h-[28px] w-[28px] items-center justify-center bg-[#0a2319] text-white">
                   <Eye className="h-4 w-4 stroke-[1.5]" />
@@ -158,48 +151,43 @@ export default function BestSellersSection() {
               </div>
 
               {/* Info Area */}
-              <div className="flex flex-col p-4 flex-1">
+              <div className="flex flex-col p-4 flex-1 ">
                 <div className="mb-1.5 flex items-baseline gap-1.5">
                   <span className="text-[13px] font-bold text-[#0a2319]">
-                    {product.price}
+                    ${(product.variants[0]?.price / 100).toFixed(2)}
                   </span>
-                  {product.originalPrice && (
-                    <span className="text-[12px] text-gray-400 line-through">
-                      {product.originalPrice}
-                    </span>
-                  )}
                 </div>
 
-                <h3
-                  className={`mb-3 text-[13px] leading-tight text-[#0a2319] cursor-pointer ${product.isUnderlined ? "underline underline-offset-4 decoration-1" : ""}`}
-                >
-                  {product.name}
-                </h3>
+                <Link href={`/products/${product._id.$oid}`}>
+                  <h3 className="mb-3 text-[13px] leading-tight text-[#0a2319] cursor-pointer hover:underline underline-offset-4 decoration-1">
+                    {product.name}
+                  </h3>
+                </Link>
 
                 <div className="mt-auto">
-                  <div className="mb-2 flex items-center gap-[4px]">
-                    {product.colors.map((color, idx) => (
-                      <div
-                        key={idx}
-                        className={`h-[10px] w-[10px] border border-gray-200 ${color}`}
-                      />
-                    ))}
-                    {product.extraColors && (
-                      <span className="ml-1 text-[10px] text-gray-500">
-                        {product.extraColors}
-                      </span>
-                    )}
+                  <div className="text-[9px] font-medium tracking-widest text-gray-600 uppercase mt-2">
+                    {product.category.name}
                   </div>
-
-                  {product.tags && (
-                    <div className="text-[9px] font-medium tracking-widest text-gray-600 uppercase mt-2">
-                      {product.tags}
-                    </div>
-                  )}
                 </div>
               </div>
             </m.div>
           ))}
+
+          {/* Fill empty spaces if we have fewer than 4 products */}
+          {displayProducts.length === 0 &&
+            Array.from({ length: 4 }).map((_, index) => (
+              <m.div
+                key={`skeleton-${index}`}
+                variants={itemVariants}
+                className={`group relative flex shrink-0 w-[260px] md:w-[300px] lg:w-[310px] flex-col border-r border-[#e5e5e5] ${index === 0 ? "border-l" : ""}`}
+              >
+                <div className="relative aspect-[3/4] w-full bg-[#f4f4f4] animate-pulse" />
+                <div className="flex flex-col p-4 flex-1 bg-white">
+                  <div className="h-4 bg-[#f4f4f4] animate-pulse w-1/3 mb-2" />
+                  <div className="h-4 bg-[#f4f4f4] animate-pulse w-3/4" />
+                </div>
+              </m.div>
+            ))}
 
           {/* Right spacer for scrolling past the last item */}
           <div className="shrink-0 w-6 lg:w-12" />

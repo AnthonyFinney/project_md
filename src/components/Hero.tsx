@@ -46,7 +46,7 @@ export default function Hero() {
           loop
           muted
           playsInline
-          className="h-full w-full object-cover object-center"
+          className="h-full w-full object-cover object-center scale-[1.5] md:scale-100"
         />
       </m.div>
 
@@ -63,7 +63,7 @@ export default function Hero() {
             variants={itemVariants}
             className="mb-8 max-w-2xl text-4xl font-serif text-white md:text-5xl lg:text-[56px] leading-[1.15] drop-shadow-md"
           >
-            New Spring–Summer Collection
+            New Muhammadi Creation Collection
           </m.h1>
           <m.button
             variants={itemVariants}
